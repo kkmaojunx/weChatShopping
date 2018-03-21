@@ -1,0 +1,19 @@
+<!--pages/firstPage/firstPage.wxml-->
+<view class='mainPage'>
+<view class='loginPart'>
+<text class='topTitle'>{{msgM}}</text>
+<view class='namePart'>
+<label>用户名：</label><input type='text' placeholder='请输入用户名' bindblur='getusername'></input>
+</view>
+<view class='pwdPart'>
+<label>密  码：</label><input type='password' placeholder='请输入密码' bindblur='getpassword'></input>
+</view>
+<button bindtap='loginBtn'>登录</button>
+<view class='bottomLine'>
+<p class=''>没有账号？</p>
+<text bindtap='showCreat' style='color:red'>点击这里</text>
+</view>
+</view>
+
+
+</view>

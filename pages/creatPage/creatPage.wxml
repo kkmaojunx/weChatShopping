@@ -1,0 +1,22 @@
+<!--pages/creatPage/creatPage.wxml-->
+<view class='mainPage'>
+<view class='loginPart'>
+<text class='topTitle'>{{msgM}}</text>
+<view class='namePart'>
+<label>用户名：</label><input type='text' placeholder='请输入用户名' bindblur='getusername'></input>
+</view>
+<view class='pwdPart'>
+<label>密码：</label><input type='password' placeholder='请输入密码' bindblur='getpassword'></input>
+</view>
+<view class='pwdPart'>
+<label>确认密码：</label><input type='password' placeholder='请输入密码' bindblur='getrepassword'></input>
+</view>
+<button bindtap='toCreat'>注册</button>
+<view class='bottomLine'>
+<p class=''>已有账号？</p>
+<text bindtap='showCreat' style='color:red'>点击这里</text>
+</view>
+</view>
+</view>
+
+

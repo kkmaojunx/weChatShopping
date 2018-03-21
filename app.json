@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/threePages/shouPage/shouPage",
+    "pages/firstPage/firstPage",
+    "pages/creatPage/creatPage",
+    "pages/threePages/jingPage/jingPage",
+    "pages/threePages/mePage/mePage"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ccc",
+    "navigationBarTitleText": "叮咚商城",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "teal",
+    "color":"#000",
+    "selectedColor": "#ccc",
+    "list": [
+      {
+        "pagePath": "pages/threePages/shouPage/shouPage",
+        "text": "首页",
+        "iconPath":"pages/images/home.png",
+        "selectedIconPath":"pages/images/home1.png"
+      },
+      {
+        "pagePath": "pages/threePages/jingPage/jingPage",
+        "text": "精选",
+          "iconPath": "pages/images/jingxuan.png",
+          "selectedIconPath": "pages/images/jingxuan1.png"
+
+      },
+      {
+        "pagePath": "pages/threePages/mePage/mePage",
+        "text": "我的",
+          "iconPath": "pages/images/me.png",
+          "selectedIconPath": "pages/images/me1.png"
+         
+      }
+    ]
+  }
+}

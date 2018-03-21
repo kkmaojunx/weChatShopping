@@ -1,0 +1,4 @@
+
+<view class="container log-list">
+  <button class='toJrump' bindtap='clickMe'>点击这里跳转</button>
+</view>
