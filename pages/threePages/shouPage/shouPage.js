@@ -5,16 +5,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    curTag:1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var self=this
+  setInterval(function(){
+   self.setData({
+     curTag: self.data.curTag == 1 ? 2 : self.data.curTag == 2 ? 3 : self.data.curTag == 3?1:2
+   })
+    
+  },1000)
   },
-
+  speak:function(){
+    console.log('ff')
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
