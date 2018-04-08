@@ -1,2 +1,83 @@
 <!--pages/threePages/jingPage/jingPage.wxml-->
-<text>精选</text>
+<view class="category_title">
+  <text>精选</text>
+</view>
+<view>
+  <scroll-view>
+    <view class="category_box">
+      <navigator url="" hover-class="navigator-hover" class='category_item'>
+        <view class="intro_box">
+          <!-- <view class="category_item_intro">
+            <rich-text name="p"> 精品优选</rich-text>
+            <rich-text name="p"> 买一送一</rich-text>
+          </view> -->
+          <!-- <view class="category_item_img">
+            <image src="../../images/home.png" style='width:40%;height:40px'></image>
+          </view> -->
+           <image src="../../images/fenLei/baoyou.jpg"></image> 
+        </view>
+      </navigator>
+      <navigator url="" hover-class="navigator-hover" class='category_item'>
+        <view>
+          <image src="../../images/fenLei/biqiang.jpg"></image>
+        </view>
+      </navigator>
+    </view>
+    <view class="category_box">
+      <navigator url="" hover-class="navigator-hover" class='category_item'>
+        <view>
+           <image src="../../images/fenLei/meiri.jpg"></image> 
+        </view>
+      </navigator>
+      <navigator url="" hover-class="navigator-hover" class='category_item'>
+        <view>
+           <image src="../../images/fenLei/yifu.png"></image> 
+        </view>
+      </navigator>
+    </view>
+
+    <view class="category_title">
+      <text>拼团.购</text>
+    </view>
+    <view class='bigBox'>
+      <navigator url="" hover-class="navigator-hover">
+        <image src="../../images/fenLei/baokuang.png" style='height:200px'></image> 
+      </navigator>
+    </view>
+
+    <view>
+      <view class="category_title">
+        <text>猜你喜欢</text>
+      </view>
+      <view>
+        <view class="category_box">
+          <view class='category_list'>
+              <navigator url="" hover-class="navigator-hover">
+                 <image src="../../images/fenLei/jing7.png" style="width:100%;height:142px;"></image>  
+              </navigator>
+          </view>
+          <view class='category_list'>
+              <navigator url="" hover-class="navigator-hover">
+                  <image src="../../images/fenLei/jing6.png" style="width:100%;height:142px;"></image>  
+                </navigator>
+          </view>
+        </view>
+
+         <view class="category_box">
+            <view class='category_list'>
+                <navigator url="" hover-class="navigator-hover">
+                    <image src="../../images/fenLei/jing5.png" style="width:100%;height:142px;"></image>  
+                  </navigator>
+            </view>
+            <view class='category_list'>
+            <navigator url="" hover-class="navigator-hover">
+                    <image src="../../images/fenLei/jing4.png" style="width:100%;height:142px;"></image>  
+                  </navigator>
+            </view>
+        </view> 
+
+      </view>
+    </view>
+
+  </scroll-view>
+</view>

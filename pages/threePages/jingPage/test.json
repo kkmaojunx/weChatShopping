@@ -1,0 +1,20 @@
+{
+  "jingxuan": [
+    {
+      "cate_title": "精品优选",
+      "cate_ads": "买一送一"
+    },
+    {
+      "cate_title": "名牌场",
+      "cate_ads": "满90减30"
+    },
+    {
+      "cate_title": "时尚美",
+      "cate_ads": "物美价廉"
+    },
+    {
+      "cate_title": "限时抢购",
+      "cate_ads": "全场5折起"
+    }
+  ]
+}
