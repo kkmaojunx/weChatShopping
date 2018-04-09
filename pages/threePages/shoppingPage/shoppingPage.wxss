@@ -1,1 +1,34 @@
 /* pages/threePages/shoppingPage/shoppingPage.wxss */
+.category_box{
+  display: flex;
+ justify-content:space-around; 
+ 
+}
+.category_box  .category_item{
+  width: 43%;
+  border:red solid 1px;
+  overflow:hidden;
+
+}
+
+ .category_box  .category_item  .item_text{
+    height: 30px;   
+    line-height: 30px;   
+    overflow: hidden;   
+    white-space: nowrap;   
+    text-overflow: ellipsis; 
+    width:160px;
+    display:block;
+    font-size:12px;
+} 
+
+.category_box  .category_item  .item_text_shou{
+     height: 30px;   
+     line-height: 30px;   
+     font-size:12px;
+}
+
+.category_box .shop_text{
+  display: flex;
+  justify-content: space-between;
+}

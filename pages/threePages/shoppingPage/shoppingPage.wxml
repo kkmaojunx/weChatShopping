@@ -1,2 +1,26 @@
-<!--pages/threePages/shoppingPage/shoppingPage.wxml-->
-<text>pages/threePages/shoppingPage/shoppingPage.wxml</text>
+<!--pages/threePages/jingPage/jingPage.wxml-->
+<view class="category_title">
+  <text>商品列表</text>
+</view>
+<view>
+  <scroll-view>
+    <view class="category_box">
+      <navigator url="" hover-class="navigator-hover" class="category_item">
+        <view class="intro_box">
+           <image src="../../images/sliderImgs/sliderOne.jpg"></image> 
+        </view>
+        <view> <text class="item_text">小碎花你懂的哈哈小碎花你懂的哈哈小碎花你懂的哈哈小碎花你懂的哈哈</text></view>
+        <view class="shop_text">
+           <text class="jiachu">$240</text>
+           <text class="item_text_shou">已500人收藏</text>
+        </view>
+      </navigator>
+       <navigator url="" hover-class="navigator-hover" class='category_item'>
+        <view>
+          <image src="../../images/sliderImgs/sliderTwo.jpg"></image>
+        </view>
+      </navigator> 
+    </view>
+
+  </scroll-view>
+</view>
