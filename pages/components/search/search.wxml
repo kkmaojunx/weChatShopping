@@ -1,4 +1,4 @@
 <!--pages/components/search/search.wxml-->
 <view class='mainSearch'>
-<input class='search' style="border:1px solid {{colorChange}}"   bindfocus='changeColor' bindblur='rebackColor'></input><text class='searchBtn' style="color:{{searchColor}}">搜索</text>
+<input class='search' style="border:1px solid {{colorChange}}"   bindfocus='changeColor' bindblur='rebackColor'></input><text class='searchBtn' style="color:{{searchColor}}" bindtap='startSearch'>搜索</text>
 </view>

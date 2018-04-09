@@ -6,8 +6,29 @@
    </view>
 
    <!--中间的商品信息-->
-   <view>
-   
+   <view class='midPart'>
+     <view class='priceLeft'>
+        <view class='realPrice'><text>优惠价：168</text></view>
+        <view class='discountPrice'><text>原价：200</text></view>
+     </view>
+     <view class='priceRight'>
+     
+     </view>
+     <view class='arrowBottom' bindtap='showBtn' style="display:{{bottomValue==0?'none':'block'}}">
+       <image src='../../images/pull.png' style='width:100%;height:100%;'></image>
+     </view>
+     <view class='controlBtn'  style="position:fixed;left:0;right:0;margin:auto;bottom:{{bottomValue}}">
+      <view class='addToCar' bindtap='toShopCar'>添加购物车</view>
+       <view class='buyNow' bindtap='showBox'>立即购买</view>
+     </view>
+
+     <view>
+     </view>
+      <view class='buyBox' style="transform:scale({{valudScale}})">
+         <view class='submitBtn' bindtap='submitBtn'>
+         确认购买
+         </view>
+      </view>
    </view>
  
 
