@@ -1,0 +1,35 @@
+/* pages/components/shoppingItems/shoppingItems.wxss */
+.hotMain{
+  width:100%;
+  position: relative;
+}
+.opa{
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.seeDetail{
+  width:100%;
+  height: 60rpx;
+  background: purple;
+  color:#f1f1f1;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom:100rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 40rpx
+
+}
+.showHotPage{
+  display: block
+}
+.showBuyDetail{
+  display: none;
+}

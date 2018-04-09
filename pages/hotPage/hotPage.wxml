@@ -1,0 +1,6 @@
+<!--pages/hotPage/hotPage.wxml-->
+<view>
+<shoppingItems></shoppingItems>
+
+
+</view>

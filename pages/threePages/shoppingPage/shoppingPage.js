@@ -1,35 +1,20 @@
-// pages/threePages/shouPage/shouPage.js
+// pages/threePages/shoppingPage/shoppingPage.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    curTag:1,
-    hotList:{},
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var self=this
-  setInterval(function(){
-   self.setData({
-     curTag: self.data.curTag == 1 ? 2 : self.data.curTag == 2 ? 3 : self.data.curTag == 3?1:2
-   })
-    
-  },1000)
-  },
-  speak:function(){
-    console.log('ff')
-  },
-  seeHotPage:function(){
-    wx.navigateTo({
-      url: '../../hotPage/hotPage',
-    })
-  },
   
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

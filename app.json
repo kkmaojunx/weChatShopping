@@ -4,7 +4,9 @@
     "pages/firstPage/firstPage",
     "pages/creatPage/creatPage",
     "pages/threePages/jingPage/jingPage",
-    "pages/threePages/mePage/mePage"
+    "pages/threePages/shoppingPage/shoppingPage",
+    "pages/threePages/mePage/mePage",
+    "pages/hotPage/hotPage"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -14,28 +16,32 @@
   },
   "tabBar": {
     "backgroundColor": "teal",
-    "color":"#000",
+    "color": "#000",
     "selectedColor": "#ccc",
     "list": [
       {
         "pagePath": "pages/threePages/shouPage/shouPage",
         "text": "首页",
-        "iconPath":"pages/images/home.png",
-        "selectedIconPath":"pages/images/home1.png"
+        "iconPath": "pages/images/home.png",
+        "selectedIconPath": "pages/images/home1.png"
       },
       {
         "pagePath": "pages/threePages/jingPage/jingPage",
         "text": "分类",
-          "iconPath": "pages/images/jingxuan.png",
-          "selectedIconPath": "pages/images/jingxuan1.png"
-
+        "iconPath": "pages/images/jingxuan.png",
+        "selectedIconPath": "pages/images/jingxuan1.png"
+      },
+      {
+        "pagePath": "pages/threePages/shoppingPage/shoppingPage",
+        "text": "购物车",
+        "iconPath": "pages/images/shoppingcar.png",
+        "selectedIconPath": "pages/images/shoppingcar1.png"
       },
       {
         "pagePath": "pages/threePages/mePage/mePage",
         "text": "我的",
-          "iconPath": "pages/images/me.png",
-          "selectedIconPath": "pages/images/me1.png"
-         
+        "iconPath": "pages/images/me.png",
+        "selectedIconPath": "pages/images/me1.png"
       }
     ]
   }

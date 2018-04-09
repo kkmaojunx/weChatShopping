@@ -1,9 +1,10 @@
 /* pages/threePages/shouPage/shouPage.wxss */
+.iconfontSize{
+  font-size: 60rpx;
+}
 .lunMain{
   overflow: hidden;
   height:160px;
-
-
 }
 .firstImg{
 float: left;
@@ -19,4 +20,25 @@ float:left
 }
 .hideImg{
   display: none;
+}
+.MidItems{
+  margin-top: 2px;
+  width:100%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around
+}
+.fourImg{
+  width:25%;
+  background: #e1e1e1;
+  cursor: pointer;
+  text-align: center;
+  border-right: 1px dashed #fff;
+}
+.fourImg:nth-child(4){
+  border-right: none;
+}
+.iconfontSizeM{
+  font-size: 30rpx
 }

@@ -1,5 +1,6 @@
 <!--pages/threePages/shouPage/shouPage.wxml-->
 <view>
+
   <view>
 <searchInput ></searchInput>
   </view>
@@ -29,7 +30,7 @@
   </view>
   </view>
 
-<!-- 活动列表的 -->
+<!-- 活动列表 -->
 <view style='marginTop:40rpx'>
 <image wx:for="{{hotList}}" src='{{item.src}}' style='width:100%;height:160px;'></image>
 </view>
