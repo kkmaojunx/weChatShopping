@@ -2,14 +2,14 @@
 <view>
 
    <view>
-    <image src='../../images/sliderImgs/sliderOne.jpg' style='width:100%;height:160px;'></image>
+    <image   wx:for="{{goodsDetail.imageUrl}}" src='{{item.url}}'   style='width:100%;height:300px;'></image>
    </view>
 
    <!--中间的商品信息-->
    <view class='midPart'>
      <view class='priceLeft'>
-        <view class='realPrice'><text>优惠价：168</text></view>
-        <view class='discountPrice'><text>原价：200</text></view>
+        <view class='realPrice'><text>优惠价：{{goodsDetail.realmoney}}</text></view>
+        <view class='discountPrice'><text>原价：{{goodsDetail.oldmoney}}</text></view>
      </view>
      <view class='priceRight'>
      

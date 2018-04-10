@@ -5,11 +5,11 @@
       <view class='opa'>
      </view>
    <view style='marginTop:40rpx'>
-     <image wx:for="{{hotList}}" src='{{item.src}}' style='width:100%;height:160px;'></image>
+    <image wx:for="{{clickData}}" src='{{item.url}}' style='width:100%;height:380px;'></image>
    </view>
 <button class='seeDetail' bindtap='seeDetail'>查看详情</button>
    </view>
    <view class="{{ishotPage?'showBuyDetail':'showHotPage'}}">
-   <buyDetail></buyDetail>
+   <buyDetail clickId='{{clickId}}' goodsDetail='{{goodsDetail}}'></buyDetail>
    </view>
 </view>

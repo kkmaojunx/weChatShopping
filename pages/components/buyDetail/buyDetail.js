@@ -4,7 +4,14 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    clickId: {
+      type: String,
+      value: null
+    },
+    goodsDetail:{
+      type:Array,
+      value:[]
+    }
   },
 
   /**
@@ -12,7 +19,8 @@ Component({
    */
   data: {
     bottomValue:'-90rpx',
-    valudScale:0
+    valudScale:0,
+
   },
 
   /**
@@ -20,14 +28,26 @@ Component({
    */
   methods: {
     showBtn(){
-      this.setData({
-        bottomValue:'0'
-      })
-      setTimeout(() => {
+      if (this.data.bottomValue=='-90rpx'){
+        this.setData({
+          bottomValue: '0'
+        })
+        setTimeout(() => {
+          this.setData({
+            bottomValue: '-90rpx'
+          })
+        }, 3000)
+      }else{
         this.setData({
           bottomValue: '-90rpx'
         })
-      }, 3000)
+        setTimeout(() => {
+          this.setData({
+            bottomValue: '0'
+          })
+        }, 3000)
+      }
+    
     },
     toShopCar(){
       wx.showToast({

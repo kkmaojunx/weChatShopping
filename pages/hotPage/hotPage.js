@@ -5,14 +5,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    clickData:[],
+    clickId:null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+     this.setData({
+       clickId:options.id
+     })
+     wx.request({
+       url: 'http://192.168.6.102/activity/list',
+       data: { id:this.data.clickId},
+       success:(res)=>{
+         console.log(res.data)
+         this.setData({
+           clickData: res.data.info[0].fileid
+         })
+       }
+     })
   },
 
   /**
