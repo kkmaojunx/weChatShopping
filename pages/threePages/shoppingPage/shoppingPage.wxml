@@ -22,5 +22,10 @@
       </navigator> 
     </view>
 
+    <view wx:for="{{['a','r','r','a','y']}}">
+      {{item}}
+    </view>
+
+
   </scroll-view>
 </view>
