@@ -5,9 +5,7 @@
   </view>
 
   <view style='margin-top:20px;' class='lunMain' bindtouchmove='speak'>
-<image src='../../images/sliderImgs/sliderOne.jpg' style='width:100%;height:300px;' class="firstImg {{curTag==1?'showImg':'hideImg'}}" bindtap='seeHotPage'></image>
-<image src='../../images/sliderImgs/sliderTwo.jpg' style='width:100%;height:300px;'  class="secondImg {{curTag==2?'showImg':'hideImg'}}" bindtap='seeHotPage'></image>
-<image src='../../images/sliderImgs/sliderThree.jpg' style='width:100%;height:300px;'  class="thirdImg {{curTag==3?'showImg':'hideImg'}}" bindtap='seeHotPage'></image>
+<image  wx:for='{{lunImg}}' src='{{item.imageUrl}}' style='width:100%;height:280px;'  bindtap='intoActivePage'    data-index='{{item.id}}' class="firstImg  {{curTag==index?'showImg':'hideImg'}}" ></image>
   </view>
 
   <view class="MidItems">

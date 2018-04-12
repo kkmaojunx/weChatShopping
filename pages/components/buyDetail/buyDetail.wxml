@@ -1,28 +1,24 @@
 <!--pages/components/buyDetail/buyDetail.wxml-->
 <view>
 
-   <view>
-    <image   wx:for="{{goodsDetail.imageUrl}}" src='{{item.url}}'   style='width:100%;height:300px;'></image>
-   </view>
+   <scroll-view  style='width:100%;height:380px;' scroll-y='true'>
+    <image  wx:for="{{goodsDetail.imageurl}}"  src='{{item.url}}'   style='width:100%;height:320px;'></image>
+   </scroll-view>
 
    <!--中间的商品信息-->
    <view class='midPart'>
-     <view class='priceLeft'>
-        <view class='realPrice'><text>优惠价：{{goodsDetail.realmoney}}</text></view>
-        <view class='discountPrice'><text>原价：{{goodsDetail.oldmoney}}</text></view>
+     <view class='priceLeft' style='position:relative'>
+        <image src='{{goodsDetail.activity_img}}' style="width:100%;height:100%;position:absolute;left:0;top:0;right:0;bottom:0;margin:auto;z-index:1"></image>
+        <view class='realPrice' style="position:absolute;left:0;top:0;right:0;bottom:0;margin:auto;z-index:22"><text>优惠价：{{goodsDetail.realmoney}}</text></view>
      </view>
-     <view class='priceRight'>
-     
-     </view>
-     <view class='arrowBottom' bindtap='showBtn' style="display:{{bottomValue==0?'none':'block'}}">
-       <image src='../../images/pull.png' style='width:100%;height:100%;'></image>
-     </view>
+       <view class='priceRight' bindtap='showBox'>
+         立即购买
+       </view>
+      
+    
+
      <view class='controlBtn'  style="position:fixed;left:0;right:0;margin:auto;bottom:{{bottomValue}}">
       <view class='addToCar' bindtap='toShopCar'>添加购物车</view>
-       <view class='buyNow' bindtap='showBox'>立即购买</view>
-     </view>
-
-     <view>
      </view>
       <view class='buyBox' style="transform:scale({{valudScale}})">
          <view class='submitBtn' bindtap='submitBtn'>
@@ -31,9 +27,25 @@
       </view>
    </view>
  
+ 
+ <view>
+       <view style='width:60px;height:60px;border-radius:50%;'>
+         <image src='{{goodsDetail.merchantid.imageHead}}' style='width:100%;height:100%;'></image>
+       </view>
+       <view style='font-size:40rpx;color:#000;width:100px;height:60px;line-height:30px;text-align:center'>{{goodsDetail.merchantid.name}}</view>
+     </view>
 
 
 
+     <view style='padding:0 20px;margin-top:10px;display:table'>
+         <view class='desText'>{{goodsDetail.title}}</view>
+     </view>
+       <textarea class='desContent'>{{goodsDetail.content}}</textarea>
 
+
+
+  <!--<view class='arrowBottom' bindtap='showBtn' style="display:{{bottomValue==0?'none':'block'}}">
+       <image src='../../images/pull.png' style='width:100%;height:100%;'></image>
+     </view>-->
 
 </view>

@@ -2,17 +2,17 @@
 .midPart{
   width:100%;
   height: 170rpx;
+  box-shadow: 2px 2px 2px rgba(0, 0,0,0.2)
 }
 .priceLeft{
   width:60%;
   height: 100%;
   float:left;
-  background: #eee;
 }
 .realPrice{
   width:100%;
   height: 60%;
-  font-size: 40rpx;
+  font-size: 50rpx;
   text-align: center;
   padding-top: 20rpx;
   font-weight: bold;
@@ -27,7 +27,12 @@
   width:40%;
   height: 100%;
   float:right;
-  background: teal;
+  background: gold;
+  text-align: center;
+  line-height: 170rpx;
+  font-size: 50rpx;
+  font-weight: bold;
+  color:#000;
 }
 .controlBtn{
   width:100%;
@@ -38,12 +43,11 @@
 .addToCar{
   border:none;
    border-radius: none;
-  background:orange;
-  width:30%;
+  background:red;
+  width:100%;
    color:#fff;
    height: 90rpx;
    line-height: 90rpx;
-   float: left;
    text-align: center
 }
 .buyNow{
@@ -87,7 +91,7 @@
   right: 0;
   background: red;
   transition: all 1s;
-  transform: scale(0)
+
 }
 .submitBtn{
   width:100%;
@@ -100,4 +104,25 @@
   bottom:0;
   left:0;
   right: 0;
+}
+.desText{
+  width:100%;
+  height: 70px;
+  line-height: 30px;
+  font-size: 40rpx;
+  color:teal;
+   display: table-cell;
+ vertical-align: middle;   
+  text-align: center;
+}
+.desContent{
+width:100%;
+height:auto;
+color:#000;
+font-size:35rpx;
+background:#eee;
+text-indent:2rem;
+ display: table-cell;
+ vertical-align: middle;   
+ 
 }

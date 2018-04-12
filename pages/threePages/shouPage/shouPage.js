@@ -5,8 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    curTag:1,
-    hotList:[],
+    curTag:0,
+    hotList:[],//下方活动
+    lunImg:[],//轮播图
   },
 
   /**
@@ -16,7 +17,7 @@ Page({
     var self = this
     setInterval(function () {
       self.setData({
-        curTag: self.data.curTag == 1 ? 2 : self.data.curTag == 2 ? 3 : self.data.curTag == 3 ? 1 : 2
+        curTag: self.data.curTag == 0 ? 1 : self.data.curTag == 1 ? 2 : self.data.curTag == 2 ? 0 : 1
       })
 
     }, 2000)
@@ -44,7 +45,8 @@ Page({
     success:(res)=>{
       console.log(res.data.info)
     this.setData({
-      hotList:res.data.info
+      hotList:res.data.info.splice(3,res.data.info.length-3),
+      lunImg:res.data.info.splice(0,3)
     })
     }
   })

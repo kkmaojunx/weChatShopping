@@ -20,7 +20,6 @@ Component({
   data: {
     bottomValue:'-90rpx',
     valudScale:0,
-
   },
 
   /**
