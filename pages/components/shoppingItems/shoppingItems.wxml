@@ -10,6 +10,6 @@
 <button class='seeDetail' bindtap='seeDetail'>查看详情</button>
    </view>
    <view class="{{ishotPage?'showBuyDetail':'showHotPage'}}">
-   <buyDetail clickId='{{clickId}}' goodsDetail='{{goodsDetail}}'></buyDetail>
+   <buyDetail clickId='{{clickId}}' ></buyDetail>
    </view>
 </view>

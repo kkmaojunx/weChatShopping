@@ -7,33 +7,31 @@
 
    <!--中间的商品信息-->
    <view class='midPart'>
-     <view class='priceLeft' style='position:relative'>
-        <image src='{{goodsDetail.activity_img}}' style="width:100%;height:100%;position:absolute;left:0;top:0;right:0;bottom:0;margin:auto;z-index:1"></image>
-        <view class='realPrice' style="position:absolute;left:0;top:0;right:0;bottom:0;margin:auto;z-index:22"><text>优惠价：{{goodsDetail.realmoney}}</text></view>
+     <view class='priceLeft' >
+        <view class='realPrice'><text>{{'￥'+goodsDetail.realmoney}}</text></view>
+          <view style='text-decoration:line-through;text-align:center'><text>{{'￥'+goodsDetail.oldmoney}}</text></view>
      </view>
-       <view class='priceRight' bindtap='showBox'>
+       <view class="priceRight " bindtap='showBox'>
+         <text class="iconfont icon-begindate"></text>
          立即购买
        </view>
-      
-    
-
-     <view class='controlBtn'  style="position:fixed;left:0;right:0;margin:auto;bottom:{{bottomValue}}">
-      <view class='addToCar' bindtap='toShopCar'>添加购物车</view>
-     </view>
-      <view class='buyBox' style="transform:scale({{valudScale}})">
-         <view class='submitBtn' bindtap='submitBtn'>
-         确认购买
-         </view>
-      </view>
    </view>
  
- 
- <view>
-       <view style='width:60px;height:60px;border-radius:50%;'>
+
+ <view style='display:flex;justify-content:space-between;align-items:center'>
+   <!-- 商家 -->
+ <view style='width:80%;height:100px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ccc;background:#eee;border-radius:8px;'>
+       <view style='width:60px;height:60px;border-radius:50%;overflow:hidden;margin-left:60px;'>
          <image src='{{goodsDetail.merchantid.imageHead}}' style='width:100%;height:100%;'></image>
        </view>
-       <view style='font-size:40rpx;color:#000;width:100px;height:60px;line-height:30px;text-align:center'>{{goodsDetail.merchantid.name}}</view>
+       <view style='font-size:40rpx;color:#000;width:100px;height:60px;line-height:30px;text-align:center;margin-right:30px;'>{{goodsDetail.merchantid.name}}</view>
      </view>
+
+     <!-- 商家右边的下标 -->
+      <view style='width:20%;height:100px;display:flex;justify-content:center;align-items:center;border-bottom:1px solid #ccc;background:#afafaf;border-radius:8px;'  bindtap='toShopCar'>
+      <image src='../../images/shoppingcar.png' style='width:60px;height:60px;'></image>
+      </view>
+ </view>
 
 
 
@@ -49,3 +47,14 @@
      </view>-->
 
 </view>
+ <scroll-view class="buyBox" style="transform:scale({{valudScale}})">
+          <view>
+          <text style='color:#fff;font-size:14px;width:100%;height:30px;line-height:30px;text-align:left'>选择购买</text>
+          <view style='display:flex;justify-content:space-around;align-items:center;margin-top:40px;'>
+          <label wx:for="{{goodsDetail.label}}"  data-index='{{item.id}}' style='width:100px;height:50px;font-size:18px;line-height:50px;text-align:center;background:#ccc;margin-right:5px;border-radius:6px;'  bindtap='showId' class="{{beiClick==item.id?'iconfont icon-duihao':''}}">{{item.name}}</label>
+          </view>
+          </view>
+         <view class="submitBtn" bindtap='submitBtn'>
+         确认购买
+         </view>
+  </scroll-view> 

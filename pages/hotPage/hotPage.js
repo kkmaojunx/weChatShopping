@@ -16,6 +16,9 @@ Page({
      this.setData({
        clickId:options.id
      })
+     wx.showLoading({
+       title: '加载中',
+     })
      wx.request({
        url: 'http://192.168.6.102/activity/list',
        data: { id:this.data.clickId},
@@ -24,6 +27,7 @@ Page({
          this.setData({
            clickData: res.data.info[0].fileid
          })
+         wx.hideLoading()
        }
      })
   },

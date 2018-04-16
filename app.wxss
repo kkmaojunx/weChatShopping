@@ -1,1 +1,9 @@
-@import "pages/font/fontAwesome.wxss"
+@import "pages/font/fontAwesome.wxss";
+@font-face {
+  font-family: 'iconfont';  /* project id 630425 */
+  src: url('//at.alicdn.com/t/font_630425_a531vnph1jo1dcxr.eot');
+  src: url('//at.alicdn.com/t/font_630425_a531vnph1jo1dcxr.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_630425_a531vnph1jo1dcxr.woff') format('woff'),
+  url('//at.alicdn.com/t/font_630425_a531vnph1jo1dcxr.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_630425_a531vnph1jo1dcxr.svg#iconfont') format('svg');
+}

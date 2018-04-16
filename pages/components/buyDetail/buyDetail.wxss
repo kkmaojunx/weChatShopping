@@ -1,4 +1,5 @@
-/* pages/components/buyDetail/buyDetail.wxss */
+@import "../../font/iconfont.wxss";
+
 .midPart{
   width:100%;
   height: 170rpx;
@@ -15,7 +16,6 @@
   font-size: 50rpx;
   text-align: center;
   padding-top: 20rpx;
-  font-weight: bold;
 }
 .discountPrice{
   width:100%;
@@ -27,12 +27,12 @@
   width:40%;
   height: 100%;
   float:right;
-  background: gold;
+  background: #ff359a;
   text-align: center;
   line-height: 170rpx;
   font-size: 50rpx;
   font-weight: bold;
-  color:#000;
+  color:#fff;
 }
 .controlBtn{
   width:100%;
@@ -83,19 +83,20 @@
 100%{bottom:10px;}
 }
 .buyBox{
-  width:100%;
-  height: 80%;
+  width:80%;
+  height: 60%;
   position: fixed;
   bottom:0;
   left: 0;
   right: 0;
-  background: red;
-  transition: all 1s;
-
+  top:0;
+  margin:auto;
+  background: rgba(0,0,0,0.5);
+ transition: all 1s;
 }
 .submitBtn{
   width:100%;
-  height: 60rpx;
+  height: 50rpx;
   text-align: center;
   line-height: 60rpx;
   color:#fff;
@@ -125,4 +126,23 @@ text-indent:2rem;
  display: table-cell;
  vertical-align: middle;   
  
+}
+.showbox{
+  display: block;
+}
+.hidebox{
+  display: none
+}
+.icon-begindate::before{
+content:"\e615";
+color:gold;
+font-size: 18px;
+}
+.icon-duihao{
+  color:#ff359a;
+}
+.icon-duihao::before{
+  content:"\e60b";
+  color:red;
+font-size: 18px;
 }
