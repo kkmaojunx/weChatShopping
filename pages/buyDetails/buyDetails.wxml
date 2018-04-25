@@ -2,7 +2,7 @@
 <view>
 
    <scroll-view  style='width:100%;height:380px;' scroll-y='true'>
-    <image  wx:for="{{goodsDetail.imageurl}}"  src='{{item.url}}'   style='width:100%;height:320px;'></image>
+    <image  wx:for="{{goodsDetail.imageurl}}"  src='{{item.url}}'  data-index='{{item.url}}' style='width:100%;' bindtap='bigImg' mode="widthFix"></image>
    </scroll-view>
 
    <!--中间的商品信息-->
@@ -24,12 +24,12 @@
        <view style='width:60px;height:60px;border-radius:50%;overflow:hidden;margin-left:60px;'>
          <image src='{{goodsDetail.merchantid.imageHead}}' style='width:100%;height:100%;'></image>
        </view>
-       <view style='font-size:40rpx;color:#000;width:100px;height:60px;line-height:30px;text-align:center;margin-right:30px;'>{{goodsDetail.merchantid.name}}</view>
+       <view style='font-size:40rpx;color:#000;width:100px;height:60px;text-align:center;margin-right:30px;'>{{goodsDetail.merchantid.name}}</view>
      </view>
 
-     <!-- 商家右边的下标 -->
+     <!-- 添加购物车 -->
       <view style='width:20%;height:100px;display:flex;justify-content:center;align-items:center;border-bottom:1px solid #ccc;background:#afafaf;border-radius:8px;'  bindtap='toShopCar'>
-      <image src='../../images/shoppingcar.png' style='width:60px;height:60px;'></image>
+      <image src='../images/shoppingcar.png' style='width:60px;height:60px;'></image>
       </view>
  </view>
 
@@ -48,13 +48,24 @@
 
 </view>
  <scroll-view class="buyBox" style="transform:scale({{valudScale}})">
+
+ <!-- 购买关闭按钮 -->
+            <view style='color:#fff;position:absolute;top:0px;right:5px;font-size:20px;width:30px;height:30px;line-height:30px;text-align:center;' bindtap='closeBox'>
+            x
+            </view>
+            <!--购买框-->
           <view>
-          <text style='color:#fff;font-size:14px;width:100%;height:30px;line-height:30px;text-align:left'>选择购买</text>
-          <view style='display:flex;justify-content:space-around;align-items:center;margin-top:40px;'>
-          <label wx:for="{{goodsDetail.label}}"  data-index='{{item.id}}' style='width:100px;height:50px;font-size:18px;line-height:50px;text-align:center;background:#ccc;margin-right:5px;border-radius:6px;'  bindtap='showId' class="{{beiClick==item.id?'iconfont icon-duihao':''}}">{{item.name}}</label>
+           <text style='color:#fff;font-size:14px;width:100%;height:30px;line-height:30px;text-align:left'>选择购买</text>
+           <view style='display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;margin-top:40px;'>
+           <label wx:for="{{goodsDetail.label}}"  data-index='{{item.id}}' style='width:100px;height:50px;line-height:50px;text-align:center;background:#ccc;margin-right:5px;border-radius:6px;margin-top:10px;'  bindtap='showId' class="{{beiClick==item.id?'iconfont icon-duihao':''}}">{{item.name}}</label>
           </view>
           </view>
          <view class="submitBtn" bindtap='submitBtn'>
-         确认购买
+          {{clickTitle}}
          </view>
   </scroll-view> 
+
+  <!--放大图片-->
+  <view style='position:fixed;left:0;right:0;top:0;bottom:0;width:100;height:100%;background:rgba(0,0,0,0.8)'  class="{{showBig?'showItem':'hiddenItem'}}" bindtap='closeBig'>
+   <image src='{{imgUrl}}' style='width:90%;position:absolute;left:0;right:0;margin:auto;top:0;bottom:0' mode="widthFix" ></image>
+  </view>

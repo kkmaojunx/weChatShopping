@@ -51,6 +51,12 @@ Page({
     }
   })
   },
+  //分类点击
+  hotOne(event){
+    wx.navigateTo({
+      url: '../../goodList/goodList?hot=' + event.currentTarget.dataset.index +"&searchValue=null",
+    })
+  },
 
   /**
    * 生命周期函数--监听页面显示

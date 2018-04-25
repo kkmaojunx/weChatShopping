@@ -1,6 +1,6 @@
 <!--pages/hotPage/hotPage.wxml-->
 <view>
-<shoppingItems clickData="{{clickData}}" clickId='{{clickId}}'></shoppingItems>
+<shoppingItem clickData="{{clickData}}" clickId='{{clickId}}'></shoppingItem>
 
 
 </view>

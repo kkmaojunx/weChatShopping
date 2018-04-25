@@ -1,83 +1,21 @@
-<!--pages/threePages/jingPage/jingPage.wxml-->
-<view class="category_title">
-  <text>精选</text>
-</view>
-<view>
-  <scroll-view>
-    <view class="category_box">
-      <navigator url="" hover-class="navigator-hover" class='category_item'>
-        <view class="intro_box">
-          <!-- <view class="category_item_intro">
-            <rich-text name="p"> 精品优选</rich-text>
-            <rich-text name="p"> 买一送一</rich-text>
-          </view> -->
-          <!-- <view class="category_item_img">
-            <image src="../../images/home.png" style='width:40%;height:40px'></image>
-          </view> -->
-           <image src="../../images/fenLei/baoyou.jpg"></image> 
-        </view>
-      </navigator>
-      <navigator url="" hover-class="navigator-hover" class='category_item'>
-        <view>
-          <image src="../../images/fenLei/biqiang.jpg"></image>
-        </view>
-      </navigator>
-    </view>
-    <view class="category_box">
-      <navigator url="" hover-class="navigator-hover" class='category_item'>
-        <view>
-           <image src="../../images/fenLei/meiri.jpg"></image> 
-        </view>
-      </navigator>
-      <navigator url="" hover-class="navigator-hover" class='category_item'>
-        <view>
-           <image src="../../images/fenLei/yifu.png"></image> 
-        </view>
-      </navigator>
-    </view>
 
-    <view class="category_title">
-      <text>拼团.购</text>
-    </view>
-    <view class='bigBox'>
-      <navigator url="" hover-class="navigator-hover">
-        <image src="../../images/fenLei/baokuang.png" style='height:200px'></image> 
-      </navigator>
-    </view>
-
-    <view>
-      <view class="category_title">
-        <text>猜你喜欢</text>
+<!--商品分类列表-->
+<view style='display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap'>
+   <view style='width:40%;height:280px;border:1px solid #aaa;margin-top:10px;' wx:for="{{searchResult}}" data-index="{{item.id}}" >
+    <image  wx:key='{{index}}' src='{{item.trolleyImg}}' style='width:100%;height:80%;'></image>
+<!--商品下面的信息-->
+    <view style='width:100%;height:20%;border-top:1px solid #eee;overflow:hidden'>
+      <view style='display:flex;justify-content:space-around;align-items:center;width:100%;height:50%'>
+         <text style='color:#ea7500;font-size:22px;'>{{'￥'+item.realmoney}}</text>
+         <text style='color:red;font-size:18px;' class='iconfont icon-huo'>{{item.shopcount}}</text>
       </view>
-      <view>
-        <view class="category_box">
-          <view class='category_list'>
-              <navigator url="" hover-class="navigator-hover">
-                 <image src="../../images/fenLei/jing7.png" style="width:100%;height:142px;"></image>  
-              </navigator>
-          </view>
-          <view class='category_list'>
-              <navigator url="" hover-class="navigator-hover">
-                  <image src="../../images/fenLei/jing6.png" style="width:100%;height:142px;"></image>  
-                </navigator>
-          </view>
-        </view>
-
-         <view class="category_box">
-            <view class='category_list'>
-                <navigator url="" hover-class="navigator-hover">
-                    <image src="../../images/fenLei/jing5.png" style="width:100%;height:142px;"></image>  
-                  </navigator>
-            </view>
-            <view class='category_list'>
-            <navigator url="" hover-class="navigator-hover">
-                    <image src="../../images/fenLei/jing4.png" style="width:100%;height:142px;"></image>  
-                  </navigator>
-            </view>
-        </view> 
-
+      <view style='width:100%;height:50%; text-overflow:ellipsis;white-space:nowrap; overflow: hidden;font-size:14px;color:#aaa'>
+      {{item.shoptitle}}
       </view>
+       
     </view>
-
-  </scroll-view>
+   </view>
+ 
 </view>
+<!--点击商品跳转-->
+  

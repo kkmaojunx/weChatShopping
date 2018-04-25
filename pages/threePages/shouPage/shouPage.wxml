@@ -4,30 +4,32 @@
 <searchInput ></searchInput>
   </view>
 
-  <view style='margin-top:20px;' class='lunMain' bindtouchmove='speak'>
+<!--轮播图-->
+  <view style='margin-top:20px;padding:0 20px' class='lunMain' bindtouchmove='speak'>
 <image  wx:for='{{lunImg}}' src='{{item.imageUrl}}' style='width:100%;height:280px;'  bindtap='intoActivePage'    data-index='{{item.id}}' class="firstImg  {{curTag==index?'showImg':'hideImg'}}"  wx:key="{{index}}"></image>
   </view>
 
+<!--分类-->
   <view class="MidItems">
-   <view class='fourImg'>
+   <view class='fourImg' bindtap='hotOne' data-index='1'>
    <i class="fa fa-hand-rock-o iconfontSize" aria-hidden="true"></i>
-  <view class="iconfontSizeM">优选</view>
+  <view class="iconfontSizeM" >优选</view>
    </view>
-     <view class='fourImg'>
+     <view class='fourImg' bindtap='hotOne'  data-index='2'>
     <i class="fa fa-hand-o-up iconfontSize" aria-hidden="true"></i>
-  <view class="iconfontSizeM">热销</view>
+  <view class="iconfontSizeM" >热销</view>
   </view>
-      <view class='fourImg'>
+      <view class='fourImg'  bindtap='hotOne'  data-index='3'>
   <i class="fa fa-hand-peace-o iconfontSize" aria-hidden="true"></i>
   <view class="iconfontSizeM">折扣</view>
   </view>
-     <view class='fourImg'>
+     <view class='fourImg' bindtap='hotOne'  data-index='4'>
   <i class="fa fa-hand-spock-o iconfontSize" aria-hidden="true"></i>
-  <view class="iconfontSizeM">抢购</view>
+  <view class="iconfontSizeM" >抢购</view>
   </view>
   </view>
 <!-- 活动列表的 -->
 <view style='margin-top:5rpx'>
-<image wx:for="{{hotList}}"  wx:key="{{index}}" src="{{item.imageUrl}}"  data-index="{{item.id}}"  style='width:100%;height:300px;'   bindtap="intoActivePage"></image>
+<image wx:for="{{hotList}}"  wx:key="{{index}}" src="{{item.imageUrl}}"  data-index="{{item.id}}"  style='width:100%;'   bindtap="intoActivePage" mode="widthFix"></image>
 </view>
 </view>

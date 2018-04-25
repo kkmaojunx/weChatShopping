@@ -1,38 +1,90 @@
 // pages/threePages/shoppingPage/shoppingPage.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-  
+    mainData:[],//购物车数据
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.request({
-      url: 'shoppingPage.json', //仅为示例，并非真实的接口地址
-      data: {
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        console.log(res.data)
-      }
-    })
+ 
   },
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    console.log('刷新啦')
+    wx.setNavigationBarTitle({
+      title: '购物车',
+    })
+    wx.request({
+      url: 'http://192.168.6.102/trolley/list',
+      data: {userid:1,buy:0},
+      success:(res)=>{
+        if(res.data.info.length==0){
+          wx.showToast({
+            title: '购物车无商品',
+            duration:2000,
+            icon:'none'
+          })
+        }
+       
+         console.log(res)
+         this.setData({
+           mainData:res.data.info
+         })
+      }
+    })
   },
-
+  //删除购物车
+  deleteShopList(event){
+    wx.showLoading({
+      title: '删除中',
+    })
+    wx.request({
+      url: 'http://192.168.6.102/trolley/delete',
+      data:{id:event.currentTarget.dataset.index},
+      success:()=>{
+        wx.showToast({
+          title: '删除成功',
+          icon:'success',
+          duration:2000
+        })
+        this.onReady()
+      },
+      fail:(err)=>{
+         wx.showToast({
+           title: err,
+           icon:'none',
+           duration:2000
+         })
+      }
+    })
+    wx.hideLoading()
+  },
+  //从购物车购买
+  buyInShopList(event){
+wx.request({
+  url: 'http://192.168.6.102/trolley/buy',
+  data:{ids:event.currentTarget.dataset.index},
+  success:(res)=>{
+    wx.showToast({
+      title: '购买成功',
+      icon:'success',
+      duration:1000,
+    })
+    this.onReady()
+  },
+  fail:(err)=>{
+   console.log(err)
+  }
+})
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -58,7 +110,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.onReady();
+    wx.stopPullDownRefresh()
   },
 
   /**

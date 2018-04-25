@@ -1,0 +1,12 @@
+<!--pages/components/shoppingItems/shoppingItems.wxml-->
+<view class='hotMain'>
+
+<view >
+      <view class='opa'>
+     </view>
+   <view style='marginTop:40rpx'>
+  <image wx:for="{{clickData}}" src='{{item.url}}' style='width:100%;' mode="widthFix"></image>
+   </view>
+<button class='seeDetail' bindtap='seeDetail'>查看详情</button>
+   </view>
+</view>

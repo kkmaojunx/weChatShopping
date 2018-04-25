@@ -13,7 +13,7 @@ Component({
   data: {
     colorChange:'#ccc',
     searchColor:'#aaa',
-    searchValue:''
+    searchValue:'',
   },
 
   /**
@@ -35,30 +35,17 @@ Component({
       })
     },
     startSearch(){
-      wx.request({
-        url: 'http://192.168.6.102/shop/search',
-        data: {
-          title: this.data.searchValue
-        },
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success: function (res) {
-          wx.showToast({
-            title: '成功',
-            icon: 'success',
-            duration: 2000
-          })
-          console.log(res)
-        },
-        fail: function (err) {
-          wx.showToast({
-            title: '失败',
-            icon: 'none',
-            duration: 2000
-          })
-        }
-      })
+      if (this.data.searchValue==''){
+        wx.showToast({
+          title: '请输入关键字再进行查询',
+          icon:'none'
+        })
+      }else{
+        wx.navigateTo({
+          url: '../../goodList/goodList?searchValue=' + this.data.searchValue+'&hot=null',
+        })
+      }
+     
     }
   }
 })

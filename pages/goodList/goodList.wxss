@@ -1,4 +1,4 @@
-@import "../../font/iconfont.wxss";
+@import "../font/iconfont.wxss";
 @font-face {
   font-family: 'iconfont';  /* project id 630425 */
   src: url('//at.alicdn.com/t/font_630425_ekt6ub0qdijxlxr.eot');

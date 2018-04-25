@@ -6,7 +6,10 @@
     "pages/threePages/jingPage/jingPage",
     "pages/threePages/shoppingPage/shoppingPage",
     "pages/threePages/mePage/mePage",
-    "pages/hotPage/hotPage"
+    "pages/hotPage/hotPage",
+    "pages/goodList/goodList",
+    "pages/buyDetails/buyDetails"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,7 +30,7 @@
       },
       {
         "pagePath": "pages/threePages/jingPage/jingPage",
-        "text": "分类",
+        "text": "订单",
         "iconPath": "pages/images/jingxuan.png",
         "selectedIconPath": "pages/images/jingxuan1.png"
       },

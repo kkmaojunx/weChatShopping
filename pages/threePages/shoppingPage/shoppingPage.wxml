@@ -1,31 +1,31 @@
-<!--pages/threePages/jingPage/jingPage.wxml-->
-<view class="category_title">
-  <text>商品列表</text>
-</view>
-<view>
-  <scroll-view>
-    <view class="category_box">
-      <navigator url="" hover-class="navigator-hover" class="category_item">
-        <view class="intro_box">
-           <image src="../../images/sliderImgs/sliderOne.jpg"></image> 
+<!--购物车列表-->
+<scroll-view style='width:100%;height:100%' scroll-y = true bindscrolltolower="loadMore" bindscrolltoupper="refesh">
+
+<view style='height:300rpx;border:3px solid #ccc;width:98%;border-bottom:none;' wx:for="{{mainData}}">
+   <!--上面-->
+     <view style='width:100%;height:70%;display:flex;justify-content:space-around;align-items:center;'>
+        <!--上面左-->
+        <view style=';width:20%;'>
+          <image src='{{item.trolleyImg}}' style='width:100px;height:100px;'></image>
         </view>
-        <view> <text class="item_text">小碎花你懂的哈哈小碎花你懂的哈哈小碎花你懂的哈哈小碎花你懂的哈哈</text></view>
-        <view class="shop_text">
-           <text class="jiachu">$240</text>
-           <text class="item_text_shou">已500人收藏</text>
-        </view>
-      </navigator>
-       <navigator url="" hover-class="navigator-hover" class='category_item'>
-        <view>
-          <image src="../../images/sliderImgs/sliderTwo.jpg"></image>
-        </view>
-      </navigator> 
+        
+         <!--上面右-->
+         <view style='display:flex;justify-content:space-between;align-items:center;flex-direction:column;width:60%;height:100%'>
+            <view style='text-overflow:ellipsis;white-space:nowrap; overflow: hidden;font-size:14px;width:100%'>{{item.shoptitle}}</view>
+            <view style='display:flex;justify-content:space-between;align-items:center;'>
+            <view style='color:teal;font-size:20px;text-align:center;border-radius:5px;width:80px;height:30px;background:rgba(0,0,0,0.8);margin-bottom:10px;'>{{item.lableName}}</view>
+             <view style='color:red;font-size:20px;text-align:right;margin-left:30px;'>{{'￥'+item.money}}</view>
+            </view>
+             
+         </view>
+        
+     </view>
+    
+  <!--下面-->
+    <view>
+      <view class='iconfont delete' style='float:left;width:50%;background:red;' bindtap='deleteShopList' data-index='{{item.id}}'></view>
+      <view class='iconfont buyIcon' style='float:right;width:50%;background:#abcdfe;' bindtap='buyInShopList' data-index='{{item.id}}'></view>
     </view>
-
-    <view wx:for="{{['a','r','r','a','y']}}">
-      {{item}}
-    </view>
-
-
-  </scroll-view>
 </view>
+
+</scroll-view>
