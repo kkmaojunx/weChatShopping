@@ -36,7 +36,7 @@ wx.navigateTo({
   loginBtn:function(){
     console.log(this.data.username + '用户名', this.data.password+'密码')
      wx.request({
-       url: 'http://139.199.223.50/login/user/login.do',
+       url: 'http://192.168.6.102/user/login',
        data:{
          username:this.data.username,
          password:this.data.password
@@ -45,11 +45,23 @@ wx.navigateTo({
          'content-type': 'application/json' // 默认值
        },
        success:function(res){
-         wx.showToast({
-           title: '成功',
-           icon: 'success',
-           duration: 2000
-         })
+         if(res.data.code==0){
+           wx.showToast({
+             title: res.data.msg,
+             icon: 'none',
+             duration: 2000
+           })
+         }else if(res.data.code==1){
+           wx.showToast({
+             title: '成功',
+             icon: 'success',
+             duration: 2000
+           })
+           wx.redirectTo({
+             url: '../threePages/mePage/mePage',
+           })
+         }
+        
        },
        fail:function(err){
          console.log('调用失败')

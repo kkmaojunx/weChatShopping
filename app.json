@@ -41,7 +41,7 @@
         "selectedIconPath": "pages/images/shoppingcar1.png"
       },
       {
-        "pagePath": "pages/threePages/mePage/mePage",
+        "pagePath": "pages/firstPage/firstPage",
         "text": "我的",
         "iconPath": "pages/images/me.png",
         "selectedIconPath": "pages/images/me1.png"

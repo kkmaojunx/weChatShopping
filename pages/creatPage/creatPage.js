@@ -18,9 +18,9 @@ Page({
   
   },
   showCreat: function () {
-    wx.navigateTo({
-      url: '../firstPage/firstPage',
-    })
+  wx.navigateBack({
+    delta:1
+  })
   },
   getusername: function (e) {
     this.setData({
@@ -49,7 +49,7 @@ Page({
       return
     }else{
       wx.request({
-        url: 'http://139.199.223.50/login/user/register.do',
+        url: 'http://192.168.6.102/user/register',
         data: {
           username: this.data.username,
           password: this.data.password
@@ -57,12 +57,29 @@ Page({
         header: {
           'content-type': 'application/json' // 默认值
         },
-        success: function (res) {
-          wx.showToast({
-            title: '成功',
-            icon: 'success',
-            duration: 2000
-          })
+        success:  (res) =>{
+          if(res.data.code==0){
+            wx.showToast({
+              title: res.data.msg,
+              icon: 'none',
+              duration: 2000
+            })
+          }else if(res.data.code==1){
+            wx.showToast({
+              title: '成功',
+              icon: 'success',
+              duration: 2000
+            })
+            setTimeout(function () {
+              wx.navigateBack({
+                delta: 1
+              })
+            }, 2000
+
+            )
+          }
+        
+        
         },
         fail: function (err) {
           wx.showToast({

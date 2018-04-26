@@ -1,8 +1,9 @@
 /* pages/creatPage/creatPage.wxss */
 /* pages/firstPage/firstPage.wxss */
+page{height:100%}
 .mainPage{
   width:100%;
-  height: 500px;
+  height: 100%;
 background: teal;
 }
 .loginPart{
