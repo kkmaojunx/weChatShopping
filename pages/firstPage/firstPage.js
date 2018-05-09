@@ -5,19 +5,33 @@ Page({
    * 页面的初始数据
    */
   data: {
+    meDate:{},//我的界面全部信息
+    userId:null,
   msgM:' 登录窗口',
   username:'',
   password:'',
   loginRight:false,//是否显示我的窗口
   headImg: "http://192.168.8.102/static/images/dongwu1.jpg",
   backImg: "http://192.168.8.102/static/images/dongwu1.jpg",
+  showPersonal:false,//个人信息显示
+  dates: '1996-02-20',
+  times: '12:00',
+  objectArray: ['中国', '英国', '美国'],
+  index: 0,
+  nowDate:new Date()
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+ 
+  },
+  bindDateChange: function (e) {
+    console.log(e.detail.value)
+    this.setData({
+      dates: e.detail.value
+    })
   },
   showCreat: function () {
 wx.navigateTo({
@@ -36,6 +50,7 @@ wx.navigateTo({
       password: e.detail.value
     })
   },
+  //点击登录
   loginBtn:function(){
      wx.request({
        url: 'http://192.168.8.102/user/login',
@@ -60,7 +75,8 @@ wx.navigateTo({
              duration: 2000
            })
           this.setData({
-            loginRight:true
+            loginRight:true,
+            userId:res.data.info
           })
           wx.setStorage({
             key: 'username',
@@ -69,6 +85,26 @@ wx.navigateTo({
           wx.setStorage({
             key: 'password',
             data: this.data.password
+          })
+          wx.setStorage({
+            key: 'userId',
+            data: this.data.userId
+          })
+          wx.request({
+            url: 'http://192.168.8.102/user/userInfo',
+            data:{id:this.data.userId},
+            success: (res) => {
+              console.log(res.data)
+              if(res.data.code==1){
+                this.setData({
+                  meDate:res.data.info,
+                  dates: res.data.info.birthday
+                })
+              }
+            },
+            fail: (err) => {
+              console.log(err)
+            }
           })
          }
         
@@ -147,10 +183,31 @@ wx.navigateTo({
     })
   },
 //我的订单点击
-  tipOne(){
-   wx.navigateTo({
-     url: '../threePages/jingPage/jingPage',
+  toWuliu(){
+   wx.showToast({
+     title: '功能开发中',
+     icon:'none',
+     duration:1000
    })
+  },
+  //个人信息点击
+  personalinfo(){
+    this.setData({
+      showPersonal:true
+    })
+  },
+  //修改按钮点击
+  sureChange(){
+    wx.showLoading({
+      title: '修改中'
+    })
+
+  },
+  //关闭个人信息
+  closeInfo(){
+this.setData({
+  showPersonal:false
+})
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
