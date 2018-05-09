@@ -1,38 +1,37 @@
 <!--pages/threePages/mePage/mePage.wxml-->
 <!--头像和背景部分-->
-<view style='width:100%;height:240px;;position:relative'>
-   <image src='{{backImg}}' style='width:100%;height:240px;position:absolute;left:0;top:0;'  bindtap='changeBack'></image>
-   <view style='width:70px;height:70px;border-radius:50%;position:absolute;top:0;bottom:20%;left:20%;margin:auto;overflow:hidden;border:3px solid #fff'>
-     <image src='{{headImg}}' style='width:100%;height:100%;' bindtap='changeHead'></image>
-   </view>
+<view style='width:100%;position:relative' mode="widthFix">
+  <image src='{{backImg}}' style='width:100%;position:absolute;left:0;top:0;' bindtap='changeBack' mode="widthFix"></image>
+  <view style='width:70px;height:70px;border-radius:50%;position:absolute;top:0;bottom:20%;left:20%;margin:auto;overflow:hidden;border:3px solid #fff'>
+    <image src='{{headImg}}' style='width:100%;height:100%;' bindtap='changeHead'></image>
+  </view>
   <!--图片下部分三栏-->
-   <view style='position:absolute;bottom:0;left:0;width:100%;height:60px;background:rgba(0,0,0,0.5);display:flex;justify-content:space-around;align-items:center;flex-wrap:nowrap'>
-       <view style='display:flex;justify-content:space-around;align-items:center;flex-direction:column;color:#fff;font-size:14px;border-right:1px solid #fff;;height:60px;width:40%;'>
-        <text>已购买</text>
-        <text>3</text>
-       </view>
+  <view style='position:absolute;bottom:0;left:0;width:100%;height:60px;background:rgba(0,0,0,0.5);display:flex;justify-content:space-around;align-items:center;flex-wrap:nowrap'>
+    <view style='display:flex;justify-content:space-around;align-items:center;flex-direction:column;color:#fff;font-size:14px;border-right:1px solid #fff;;height:60px;width:40%;'>
+      <text >已购买</text>
+      <text>3</text>
+    </view>
 
-        <view style='display:flex;justify-content:space-around;align-items:center;flex-direction:column;color:#fff;font-size:14px;border-right:1px solid #fff;height:60px;width:40%;'>
-        <text>购物车</text>
-        <text>2</text>
-       </view>
+    <view style='display:flex;justify-content:space-around;align-items:center;flex-direction:column;color:#fff;font-size:14px;border-right:1px solid #fff;height:60px;width:40%;'>
+      <text>购物车</text>
+      <text>2</text>
+    </view>
 
-        <view style='display:flex;justify-content:space-around;align-items:center;flex-direction:column;color:#fff;font-size:14px;;height:60px;width:40%;'>
-        <text>物流订单</text>
-        <text>3</text>
-       </view>
-   </view>
-  
+    <view style='display:flex;justify-content:space-around;align-items:center;flex-direction:column;color:#fff;font-size:14px;;height:60px;width:40%;'>
+      <text>物流订单</text>
+      <text>3</text>
+    </view>
+  </view>
+
 </view>
 
 <!--信息栏-->
-<scroll-view style='width:96%;position:absolute;top:240px;left:0;right:0;margin:auto;background:#eee;border:1px solid #ccc;height:300px;display:flex;align-items:center;justify-content:center;flex-direction:column'>
-   <view class='commonMe iconfont icon-dingdan icon-jiantou'>我的订单</view>
-    <view class='commonMe iconfont icon-icon_wuliuguanli icon-jiantou'>物流查询</view>
-     <view class='commonMe iconfont icon-mima icon-jiantou'>个人信息</view>
-      <view class='commonMe iconfont icon-xiugaixiang icon-jiantou'>修改密码</view>
-       <view class='commonMe iconfont icon-youxuan icon-jiantou'>积分管理</view>
-        <view class='commonMe iconfont icon-position icon-jiantou'>收货地址</view>
-         <view class='commonMe iconfont icon-fankuipingjia icon-jiantou'>反馈</view>
-</scroll-view>
-
+<view style='width:96%;position:absolute;top:240px;left:0;right:0;margin:auto;background:#eee;border:1px solid #ccc;height:300px;display:flex;align-items:center;justify-content:center;flex-direction:column'>
+  <view class='commonMe iconfont icon-dingdan icon-jiantou' bindtap='toDingdan'>我的订单</view>
+  <view class='commonMe iconfont icon-icon_wuliuguanli icon-jiantou' bindtap='toWuliu'>物流查询</view>
+  <view class='commonMe iconfont icon-mima icon-jiantou' bindtap='personalInfo'>个人信息</view>
+  <view class='commonMe iconfont icon-xiugaixiang icon-jiantou' bindtap='changePwd'>修改密码</view>
+  <view class='commonMe iconfont icon-youxuan icon-jiantou' bindtap='jifenManage'>积分管理</view>
+  <view class='commonMe iconfont icon-position icon-jiantou' bindtap='addressGet'>收货地址</view>
+  <view class='commonMe iconfont icon-fankuipingjia icon-jiantou' bindtap='wantSay'>反馈</view>
+</view>

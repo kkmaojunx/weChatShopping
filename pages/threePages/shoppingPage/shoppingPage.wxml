@@ -29,3 +29,9 @@
 </view>
 
 </scroll-view>
+<view class="{{noSession?'showItem':'hiddenItem'}} noneStyle">
+您还没有登录哟~
+</view>
+<view class="{{(mainData.length==0&&noSession==false)?'showItem':'hiddenItem'}} noneStyle">
+空空如也~
+</view>

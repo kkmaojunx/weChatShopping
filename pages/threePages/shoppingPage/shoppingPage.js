@@ -5,13 +5,43 @@ Page({
    */
   data: {
     mainData:[],//购物车数据
+    noSession:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+wx.getStorage({
+  key: 'username',
+  success: (res)=> {
+    if(res.data==''){
+      this.setData({
+        noSession: true
+      })
+    }else{
+      this.setData({
+        noSession: false
+      })
+      wx.setNavigationBarTitle({
+        title: '购物车',
+      })
+      wx.request({
+        url: 'http://192.168.8.102/trolley/list',
+        data: { userid: 1, buy: 0 },
+        success: (res) => {
+
+
+          console.log(res)
+          this.setData({
+            mainData: res.data.info
+          })
+        }
+      })
+    }
  
+  },
+})
   },
 
   /**
@@ -19,27 +49,7 @@ Page({
    */
   onReady: function () {
     console.log('刷新啦')
-    wx.setNavigationBarTitle({
-      title: '购物车',
-    })
-    wx.request({
-      url: 'http://192.168.6.102/trolley/list',
-      data: {userid:1,buy:0},
-      success:(res)=>{
-        if(res.data.info.length==0){
-          wx.showToast({
-            title: '购物车无商品',
-            duration:2000,
-            icon:'none'
-          })
-        }
-       
-         console.log(res)
-         this.setData({
-           mainData:res.data.info
-         })
-      }
-    })
+
   },
   //删除购物车
   deleteShopList(event){
@@ -47,7 +57,7 @@ Page({
       title: '删除中',
     })
     wx.request({
-      url: 'http://192.168.6.102/trolley/delete',
+      url: 'http://192.168.8.102/trolley/delete',
       data:{id:event.currentTarget.dataset.index},
       success:()=>{
         wx.showToast({
@@ -70,7 +80,7 @@ Page({
   //从购物车购买
   buyInShopList(event){
 wx.request({
-  url: 'http://192.168.6.102/trolley/buy',
+  url: 'http://192.168.8.102/trolley/buy',
   data:{ids:event.currentTarget.dataset.index},
   success:(res)=>{
     wx.showToast({
@@ -78,7 +88,7 @@ wx.request({
       icon:'success',
       duration:1000,
     })
-    this.onReady()
+    this.onLoad()
   },
   fail:(err)=>{
    console.log(err)
@@ -110,7 +120,7 @@ wx.request({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.onReady();
+    this.onLoad();
     wx.stopPullDownRefresh()
   },
 

@@ -21,7 +21,7 @@ Page({
       title: '加载中',
     })
     wx.request({
-      url: 'http://192.168.6.102/shop/shopById',
+      url: 'http://192.168.8.102/shop/shopById',
       data: { id:options.id },
       success: (res) => {
         this.setData({
@@ -64,7 +64,7 @@ Page({
         title: '添加中',
       })
       wx.request({
-        url: "http://192.168.6.102/trolley/add",
+        url: "http://192.168.8.102/trolley/add",
         data: { shoppingid: this.data.goodsDetail.id, userid: 1, labelId: this.data.beiClick, buy: this.data.clickTitle == '确认购买' ? 1 : 0 },
         success:  () =>{
           wx.showToast({

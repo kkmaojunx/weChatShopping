@@ -20,7 +20,7 @@ Page({
        title: '加载中',
      })
      wx.request({
-       url: 'http://192.168.6.102/activity/list',
+       url: 'http://192.168.8.102/activity/list',
        data: { id:this.data.clickId},
        success:(res)=>{
          console.log(res.data)

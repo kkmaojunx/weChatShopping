@@ -5,27 +5,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    headImg: "http://tmp/wx6bc69f050bfce54e.o6zAJs1H90tnildSj3TU-BTVJOek.h2eaFVXw4E9c4ab3e7435769d68ef52208e349e5dd5b.jpg",
-    backImg: "http://tmp/wx6bc69f050bfce54e.o6zAJs1H90tnildSj3TU-BTVJOek.h2eaFVXw4E9c4ab3e7435769d68ef52208e349e5dd5b.jpg"
+    headImg:
+    "http://192.168.8.102/static/images/xiezi1.jpg",
+    backImg: "http://192.168.8.102/static/images/dongwu1.jpg"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
   },
+
+  toDingdan() {
+    console.warn('去订单');
+    wx.navigateTo({
+      url: '../jingPage/jingPage',
+    })
+  },
+
   //更换头像
   changeHead(){
     wx.showActionSheet({
       itemList: ['查看大图', '更换头像'],
       success: (res) =>{
-        console.log(res.tapIndex)
         if (res.tapIndex=='0'){
           wx.previewImage({
             // 当前显示图片的http链接
             urls: [this.data.headImg] // 需要预览的图片http链接列表
           })
+          console.log(this.data.headImg)
         } else if (res.tapIndex == '1'){
           wx.chooseImage({
             count: 1, // 默认9
@@ -49,6 +57,7 @@ Page({
   },
   //更换背景
   changeBack(){
+    console.log('点击啦')
     wx.showActionSheet({
       itemList: ['查看大图', '更换背景'],
       success: (res) => {
@@ -69,6 +78,7 @@ Page({
               this.setData({
                 backImg: tempFilePaths[0]
               })
+              console.log(res)
             }
           })
         }
@@ -79,6 +89,7 @@ Page({
       }
     })
   },
+  //我的订单
 
   /**
    * 生命周期函数--监听页面初次渲染完成

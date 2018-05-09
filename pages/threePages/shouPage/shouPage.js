@@ -41,9 +41,8 @@ Page({
    */
   onReady: function () {
   wx.request({
-    url: 'http://192.168.6.102/activity/list',
+    url: 'http://192.168.8.102/activity/list',
     success:(res)=>{
-      console.log(res.data.info)
     this.setData({
       hotList:res.data.info.splice(3,res.data.info.length-3),
       lunImg:res.data.info.splice(0,3)

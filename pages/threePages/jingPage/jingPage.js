@@ -7,37 +7,54 @@ Page({
   data: {
     searchResult: [],
     clickId: null,
-    ishotPage: true
+    ishotPage: true,
+    noSession:false,//是否登录
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.request({
-      url: 'http://192.168.6.102/trolley/list',
-      data: {
-        userid:1,
-        buy:1
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: (res) => {
-       
-        this.setData({
-          searchResult: res.data.info
-        })
-        console.log(res.data.info)
-      },
-      fail: function (err) {
-        wx.showToast({
-          title: '失败',
-          icon: 'none',
-          duration: 2000
-        })
+    wx.getStorage({
+      key: 'username',
+      success:  (res)=> {
+        console.log(res.data)
+        if(res.data==''){
+       this.setData({
+         noSession:true
+       })
+        }else {
+          this.setData({
+            noSession:false
+          })
+          wx.request({
+            url: 'http://192.168.8.102/trolley/list',
+            data: {
+              userid: 1,
+              buy: 1
+            },
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            success: (res) => {
+
+              this.setData({
+                searchResult: res.data.info
+              })
+              console.log(res.data.info)
+            },
+            fail: function (err) {
+              wx.showToast({
+                title: '失败',
+                icon: 'none',
+                duration: 2000
+              })
+            }
+          })
+        }
       }
     })
+
 
 
   },
