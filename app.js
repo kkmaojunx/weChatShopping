@@ -9,6 +9,10 @@ wx.setStorage({
       key: 'password',
       data: '',
     })
+    wx.setStorage({
+      key: 'userId',
+      data: '',
+    })
   },
 
   globalData: {

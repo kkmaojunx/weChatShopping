@@ -11,12 +11,24 @@ Page({
     imgUrl:'',//放大图片的图片地址
     showBig:false,
     clickTitle:'',
+    userId:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.getStorage({
+      key: 'userId',
+      success: (res)=> {
+        this.setData({
+          userId:res.data
+        })
+      },
+      fail:(err)=>{
+        console.log(err)
+      }
+    })
     wx.showLoading({
       title: '加载中',
     })
@@ -63,27 +75,36 @@ Page({
       wx.showLoading({
         title: '添加中',
       })
-      wx.request({
-        url: "http://192.168.8.102/trolley/add",
-        data: { shoppingid: this.data.goodsDetail.id, userid: 1, labelId: this.data.beiClick, buy: this.data.clickTitle == '确认购买' ? 1 : 0 },
-        success:  () =>{
-          wx.showToast({
-            title: this.data.clickTitle == '确认购买' ?'购买成功':'添加成功',
-            icon: 'success',
-            duration: 2000
-          })
-          this.setData({
-            valudScale: 0,
-            beiClick:null
-          })
-        },
-        fail: (err) => {
-          wx.showToast({
-            title: err,
-          })
-        }
-      })
-      wx.hideLoading()
+      if(this.data.userId==''){
+        wx.showToast({
+          title: '您还没有登录~',
+          icon:'none',
+          duration:1000
+        })
+      }else{
+        wx.request({
+          url: "http://192.168.8.102/trolley/add",
+          data: { shoppingid: this.data.goodsDetail.id, userid: this.data.userId, labelId: this.data.beiClick, buy: this.data.clickTitle == '确认购买' ? 1 : 0 },
+          success: () => {
+            wx.showToast({
+              title: this.data.clickTitle == '确认购买' ? '购买成功' : '添加成功',
+              icon: 'success',
+              duration: 2000
+            })
+            this.setData({
+              valudScale: 0,
+              beiClick: null
+            })
+          },
+          fail: (err) => {
+            wx.showToast({
+              title: err,
+            })
+          }
+        })
+        wx.hideLoading()
+      }
+   
      
     }
 

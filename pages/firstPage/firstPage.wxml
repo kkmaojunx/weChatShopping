@@ -1,59 +1,65 @@
 <!--pages/firstPage/firstPage.wxml-->
 <view class="mainPage {{loginRight?'hiddenItem':'showItem'}}">
-    <view class='loginPart'>
-      <text class='topTitle'>{{msgM}}</text>
-      <view class='namePart'>
-      <label>用户名：</label><input type='text' placeholder='请输入用户名' bindblur='getusername'></input>
+  <view class='loginPart'>
+    <text class='topTitle'>{{msgM}}</text>
+    <view class='namePart'>
+      <label>用户名：</label>
+      <input type='text' placeholder='请输入用户名' bindinput='getusername' value='{{username}}'></input>
     </view>
-   <view class='pwdPart'>
-    <label>密  码：</label><input type='password' placeholder='请输入密码' bindblur='getpassword'></input>
-   </view>
+    <view class='pwdPart'>
+      <label>密 码：</label>
+      <input type='password' placeholder='请输入密码' bindinput='getpassword' value='{{password}}'></input>
+    </view>
     <button bindtap='loginBtn'>登录</button>
-   <view class='bottomLine'>
-    <p class=''>没有账号？</p>
-     <text bindtap='showCreat' style='color:red'>点击这里</text>
-   </view>
+    <view class='bottomLine'>
+      <p class=''>没有账号？</p>
+      <text bindtap='showCreat' style='color:red'>点击这里</text>
+    </view>
   </view>
 </view>
 
-
+<!--切换卖家-->
+<view style='width:60px;height:60px;border-radius:50%;position:absolute;bottom:10px;right:10px;background:#FFC125;text-align:center;line-height:60px;box-shadow:0px 3px 0px rgba(0,0,0,0.5)' class="{{loginRight?'showItem':'hiddenItem'}}">
+  切换
+</view>
 <view class="{{loginRight?'showItem':'hiddenItem'}}" style='width:100%;height:100%;'>
-<!--pages/threePages/mePage/mePage.wxml-->
-<!--头像和背景部分-->
-<view style='width:100%;height:240px;position:relative'>
-   <image src='{{backImg}}' style='width:100%;height:240px;position:absolute;left:0;top:0;'  bindtap='changeBack'></image>
-   <view style='width:70px;height:70px;border-radius:50%;position:absolute;top:0;bottom:20%;left:20%;margin:auto;overflow:hidden;border:3px solid #fff'>
-     <image src='{{headImg}}' style='width:100%;height:100%;' bindtap='changeHead'></image>
-   </view>
-  <!--图片下部分三栏-->
-   <view style='position:absolute;bottom:0;left:0;width:100%;height:60px;background:rgba(0,0,0,0.5);display:flex;justify-content:space-around;align-items:center;flex-wrap:nowrap'>
-       <view style='display:flex;justify-content:space-around;align-items:center;flex-direction:column;color:#fff;font-size:14px;border-right:1px solid #fff;;height:60px;width:40%;'>
+  <!--pages/threePages/mePage/mePage.wxml-->
+  <!--头像和背景部分-->
+  <view style='width:100%;height:240px;position:relative'>
+    <image src="{{backImg}}" style='width:100%;height:100%;position:absolute;left:0;top:0;' bindtap='changeBack' mode='aspectFill'></image>
+    <view style='width:70px;height:70px;border-radius:50%;position:absolute;top:0;bottom:20%;left:20%;margin:auto;overflow:hidden;border:3px solid #fff'>
+      <image src='{{headImg}}' mode='aspectFill' bindtap='changeHead' style='width:100%;height:100%'></image>
+    </view>
+    <!--图片下部分三栏-->
+    <view style='position:absolute;bottom:0;left:0;width:100%;height:60px;background:rgba(0,0,0,0.5);display:flex;justify-content:space-around;align-items:center;flex-wrap:nowrap'>
+      <view style='display:flex;justify-content:space-around;align-items:center;flex-direction:column;color:#fff;font-size:14px;border-right:1px solid #fff;;height:60px;width:40%;'>
         <text>已购买</text>
         <text>{{meDate.alreadyBuy}}</text>
-       </view>
+      </view>
 
-        <view style='display:flex;justify-content:space-around;align-items:center;flex-direction:column;color:#fff;font-size:14px;border-right:1px solid #fff;height:60px;width:40%;'>
+      <view style='display:flex;justify-content:space-around;align-items:center;flex-direction:column;color:#fff;font-size:14px;border-right:1px solid #fff;height:60px;width:40%;'>
         <text>购物车</text>
         <text>{{meDate.shopBus}}</text>
-       </view>
+      </view>
 
-        <view style='display:flex;justify-content:space-around;align-items:center;flex-direction:column;color:#fff;font-size:14px;;height:60px;width:40%;'>
+      <view style='display:flex;justify-content:space-around;align-items:center;flex-direction:column;color:#fff;font-size:14px;;height:60px;width:40%;'>
         <text>物流订单</text>
         <text>{{meDate.objectFlowIndent}}</text>
-       </view>
-   </view>
-  
-</view>
+      </view>
+    </view>
 
-<!--信息栏-->
-<scroll-view style='width:96%;position:absolute;top:240px;left:0;right:0;margin:auto;background:#eee;border:1px solid #ccc;height:300px;display:flex;align-items:center;justify-content:center;flex-direction:column'>
-    <view class='commonMe iconfont icon-icon_wuliuguanli icon-jiantou'  bindtap='toWuliu'>物流查询</view>
-     <view class='commonMe iconfont icon-mima icon-jiantou'  bindtap='personalinfo'>个人信息</view>
-      <view class='commonMe iconfont icon-xiugaixiang icon-jiantou'  bindtap='changePwd'>修改密码</view>
-       <view class='commonMe iconfont icon-youxuan icon-jiantou'  bindtap='toJifen'>积分管理</view>
-        <view class='commonMe iconfont icon-position icon-jiantou'  bindtap='addressManage'>收货地址</view>
-         <view class='commonMe iconfont icon-fankuipingjia icon-jiantou'  bindtap='toSay'>反馈</view>
-</scroll-view>
+  </view>
+
+  <!--信息栏-->
+  <scroll-view style='width:96%;position:absolute;top:240px;left:0;right:0;margin:auto;background:#eee;border:1px solid #ccc;height:300px;display:flex;align-items:center;justify-content:center;flex-direction:column'>
+    <view class='commonMe iconfont icon-icon_wuliuguanli icon-jiantou' bindtap='toWuliu'>物流查询</view>
+    <view class='commonMe iconfont icon-mima icon-jiantou' bindtap='personalinfo'>个人信息</view>
+    <view class='commonMe iconfont icon-xiugaixiang icon-jiantou' bindtap='changePwd'>修改密码</view>
+    <view class='commonMe iconfont icon-youxuan icon-jiantou' bindtap='toJifen'>积分管理</view>
+    <view class='commonMe iconfont icon-position icon-jiantou' bindtap='addressManage'>收货地址</view>
+    <view class='commonMe iconfont icon-fankuipingjia icon-jiantou' bindtap='toSay'>反馈</view>
+    <view class='commonMe iconfont icon-fankuipingjia icon-jiantou' bindtap='existLogin'>退出登录</view>
+  </scroll-view>
 
 
 </view>
@@ -61,20 +67,95 @@
 <!--个人信息界面-->
 <view style='width:100%;height:100%;background:rgba(0,0,0,0.5);top:0;bottom:0;position:absolute' class="{{showPersonal?'showItem':'hiddenItem'}}">
 </view>
-<view style='position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;width:75%;height:50%; background:#ccc;border-radius:10px;padding:40px 20px 0 20px;' class="{{showPersonal?'showItem':'hiddenItem'}}">
-<view style='position:absolute;right:10px;top:0;color:#fff;font-size:30px;' bindtap='closeInfo'>x</view>
-     <view style='width:100%;display:flex;justify-content:center;align-items:center;height:40px;'>
-         <text style='width:85px;'>用户名：</text><input value='{{meDate.username}}' style="border:1px solid #aaa;color:#1f1f1f"></input>
-     </view>
-       <view style='width:100%;display:flex;justify-content:center;align-items:center;height:40px;margin-top:30px;'>
-         <text style='width:85px;margin-left:-70px;'>生日：</text> <picker mode="date" value="{{dates}}" start="1978-01-01" end="{{nowDate}}" bindchange="bindDateChange">  
-    <view class="picker">  
-     {{dates}}  
-    </view>  
-  </picker> 
-     </view>
-       <view style='width:100%;display:flex;justify-content:center;align-items:center;height:120px;margin-top:30px;'>
-        <text style='width:85px;'>签名:</text><textarea style="border:1px solid #FFE4E1;overflow:auto;border-radius:10px;max-height:100px;" value='{{meDate.content}}'></textarea>
-     </view>
-     <view style='position:absolute;bottom:0;left:0;right:0;margin:auto;width:80%; height:30px;text-align:center;line-height:30px;background:#00FFFF;color:#fff;border-radius:5px;' bindtap='sureChange'>修改</view>
+<view style='position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;width:75%;height:80%; background:#ccc;border-radius:10px;padding:40px 20px 0 20px;' class="{{showPersonal?'showItem':'hiddenItem'}}">
+  <view class='closeStyle' bindtap='closeInfo'>x</view>
+  <view style='width:100%;display:flex;justify-content:center;align-items:center;height:40px;'>
+    <text style='width:95px;text-align:right;'>用户名：</text>
+    <input value='{{username}}' style="border:1px solid #aaa;color:#1f1f1f;border-radius:3px;width:190px;" bindchange='getUsername'></input>
+  </view>
+  <view style='width:100%;display:flex;justify-content:center;align-items:center;height:40px;margin-top:30px;'>
+    <text style='width:95px;text-align:right;'>生    日：</text>
+    <picker mode="date" value="{{dates}}" start="1978-01-01" end="{{nowDate}}" bindchange="bindDateChange">
+      <view class="picker" style="border:1px solid #aaa;color:#1f1f1f;border-radius:3px;width:190px;">
+        {{dates}}
+      </view>
+    </picker>
+  </view>
+  <view style='width:100%;display:flex;justify-content:center;align-items:center;height:40px;margin-top:30px;'>
+    <text style='width:95px;text-align:right;'>手    机：</text>
+    <input value='{{phone}}' style="border:1px solid #aaa;color:#1f1f1f;border-radius:3px;width:190px;" bindchange='getPhone'></input>
+  </view>
+  <view style='width:100%;display:flex;justify-content:center;align-items:center;height:120px;margin-top:30px;'>
+    <text style='width:95px;text-align:right;'>签    名:</text>
+    <textarea style="border:1px solid #aaa;color:#1f1f1f;border-radius:3px;width:190px;" value='{{content}}' bindinput='getContent'></textarea>
+  </view>
+  <view style='position:absolute;bottom:0;left:0;right:0;margin:auto;width:80%; height:30px;text-align:center;line-height:30px;background:#00FFFF;color:#fff;border-radius:5px;' bindtap='sureChange'>修改</view>
 </view>
+
+<!--修改密码-->
+<view style='width:100%;height:100%;background:rgba(0,0,0,0.5);top:0;bottom:0;position:absolute' class="{{changePwd?'showItem':'hiddenItem'}}">
+</view>
+<view style='position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;width:75%;height:50%;background:#ccc;border-radius:10px;padding:40px 20px 0 20px;' class="{{changePwd?'showItem':'hiddenItem'}}">
+  <view class='closeStyle' bindtap='closePwd'>x</view>
+  <view style='width:100%;display:flex;justify-content:center;align-items:center;height:40px;'>
+    <text style='width:100px;text-align:right;'>原     密     码:</text>
+    <input value='{{oldPwd}}' style='border:1px solid #aaa;border-radius:3px;' bindinput='getOldpwd' disabled='{{!noCheck}}'></input>
+  </view>
+  <button style='margin-top:10px;' bindtap='checkPwd' disabled='{{!noCheck}}'>验证</button>
+  <view style='width:100%;display:flex;justify-content:center;align-items:center;height:40px;margin-top:10px;'>
+    <text style='width:100px;text-align:right;'>新     密     码:</text>
+    <input value='{{newPwd}}' style='border:1px solid #aaa;border-radius:3px;' disabled='{{noCheck}}' bindinput='getNewPwd'></input>
+  </view>
+  <view style='width:100%;display:flex;justify-content:center;align-items:center;height:40px;margin-top:10px;'>
+    <text style='width:100px;text-align:right;'>再次输入:</text>
+    <input value='{{newPwd2}}' style='border:1px solid #aaa;border-radius:3px;' disabled='{{noCheck}}' bindinput='getNewPwd2'></input>
+  </view>
+  <button style='position:absolute;bottom:0;left:0;right:0;margin:auto;' bindtap='rewritePwd' disabled='{{noCheck}}'>确认修改
+  </button>
+</view>
+
+<!--收货地址-->
+<view style='width:100%;height:100%;background:rgba(0,0,0,0.5);top:0;bottom:0;position:absolute;' class="{{getAdress?'showItem':'hiddenItem'}}">
+</view>
+<view  style='position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;width:85%;height:80%;  overflow-y:hidden;background:#ccc;border-radius:10px;padding:10px 20px;' class="{{getAdress?'showItem':'hiddenItem'}}">
+  <view class='closeStyle' bindtap='closeAddress'>x</view>
+  <!--单个物流地址-->
+  <view style='width:100%;height:60px;display:flex;justify-content:center;align-items:center;border-bottom:2px solid #aaa;margin-bottom:10px;' wx:for="{{addressData}}" bindlongtap='deleteAddre' data-id='{{item.id}}'>
+    <!--左边上下-->
+    <view style='width:90%;display:flex;justify-content:center;align-items:center;flex-direction:column;'>
+      <view style='width:100%;height:30px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;'>{{item.address}}</view>
+      <view style='width:100%;height:30px;display:flex;justify-content:space-around;align-items:flex-start;flex-wrap:nowrap'>
+        <text style='width:50%;line-height:30px;text-align:center;font-size:18px;'>{{item.name}}</text>
+        <text style='width:50%;line-height:30px;text-align:center;'>{{item.phone}}</text>
+      </view>
+    </view>
+    <!--右边编辑图标-->
+    <view class=' iconfont icon-write' bindtap='writeAddress' data-id='{{item.id}}'>
+    </view>
+  </view>
+  <view style='background:#00FFFF;text-align:center;height:40px;width:100%;line-height:40px;position:absolute;bottom:0;left:0;right:0;margin:auto;color:#fff;border-radius:0 0 5px 5px' bindtap='addAddre'>
+  新增
+  </view>
+</view>
+
+<!--编辑物流信息-->
+<view style='width:100%;height:100%;background:rgba(0,0,0,0.5);top:0;bottom:0;position:absolute' class="{{isWriteAdd?'showItem':'hiddenItem'}}">
+</view>
+<view style='position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;width:75%;height:60%; background:#fff;border-radius:10px;padding:60px 20px 0 20px;' class="{{isWriteAdd?'showItem':'hiddenItem'}}">
+
+  <view class='closeStyle' style='background:#ccc;color:#000;' bindtap='closeWritePage'>x</view>
+  <view style='width:100%;display:flex;justify-content:center;align-items:center;'>
+    <text style='width:120px;text-align:right;'>地    址：</text>
+    <textarea value='{{addressWrite}}' style='border:1px solid #aaa;border-radius:3px;max-height:80px;overflow-y:auto;width:200px;' bindinput='getInputValueAdd'></textarea>
+  </view>
+  <view style='width:100%;display:flex;justify-content:center;align-items:center;margin-top:20px;'>
+    <text style='width:120px;text-align:right;'>收   件   人：</text>
+    <input value='{{nameWrite}}' style='border:1px solid #aaa;border-radius:3px;width:200px;' bindinput='getInputValuename'></input>
+  </view>
+  <view style='width:100%;display:flex;justify-content:center;align-items:center;margin-top:20px;'>
+    <text style='width:120px;text-align:right;'>联系电话：</text>
+    <input value='{{phoneWrite}}' style='border:1px solid #aaa;border-radius:3px;width:200px;' bindinput='getInputValuephone'></input>
+  </view>
+  <button style='position:absolute;bottom:0;left:0;right:0;margin:auto;' bindtap='changeAdd'>{{isadd==true?'新增':'修改'}}</button>
+</view>
+

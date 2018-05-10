@@ -166,3 +166,20 @@ p{
 .hiddenItem{
   display: none;
 }
+.icon-write::before{
+  content: '\e604';
+  font-size: 24px;
+}
+.closeStyle{
+  position:absolute;
+right:0px;
+top:0px;
+color:#aaa;
+font-size:30px;
+width:30px;
+height:30px;
+text-align:center;
+line-height:27px;
+border-radius:50%;
+
+}

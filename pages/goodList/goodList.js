@@ -24,11 +24,6 @@ Page({
           'content-type': 'application/json' // 默认值
         },
         success: (res) => {
-          wx.showToast({
-            title: '成功',
-            icon: 'success',
-            duration: 2000
-          })
           this.setData({
             searchResult: res.data.info
           })

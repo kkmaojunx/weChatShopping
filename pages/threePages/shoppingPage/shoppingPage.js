@@ -5,17 +5,26 @@ Page({
    */
   data: {
     mainData:[],//购物车数据
-    noSession:false
+    noSession:false,
+    userId:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.getStorage({
+      key: 'userId',
+      success: (res)=> {
+        this.setData({
+          userId:res.data
+        })
+      },
+    })
 wx.getStorage({
   key: 'username',
   success: (res)=> {
-    if(res.data==''){
+    if(!res.data){
       this.setData({
         noSession: true
       })
@@ -28,7 +37,7 @@ wx.getStorage({
       })
       wx.request({
         url: 'http://192.168.8.102/trolley/list',
-        data: { userid: 1, buy: 0 },
+        data: { userid: this.data.userId, buy: 0 },
         success: (res) => {
 
 
@@ -65,7 +74,7 @@ wx.getStorage({
           icon:'success',
           duration:2000
         })
-        this.onReady()
+        this.onLoad()
       },
       fail:(err)=>{
          wx.showToast({
@@ -99,7 +108,8 @@ wx.request({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    console.log('chuxianla')
+    this.onLoad()
   },
 
   /**
