@@ -1,60 +1,56 @@
-/* pages/threePages/mePage/mePage.wxss */
-
-@font-face {
-  font-family: 'iconfont';  /* project id 630425 */
-  src: url('//at.alicdn.com/t/font_630425_pulonoj0v534bo6r.eot');
-  src: url('//at.alicdn.com/t/font_630425_pulonoj0v534bo6r.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_630425_pulonoj0v534bo6r.woff') format('woff'),
-  url('//at.alicdn.com/t/font_630425_pulonoj0v534bo6r.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_630425_pulonoj0v534bo6r.svg#iconfont') format('svg');
-}
-.commonMe{
+page{
   width:100%;
-  height:36px;
-  line-height: 36px;
-  text-align: left;
+  height: 100%;
+}
+.pagemm{
+  width:100%;
+  height:100%
+}
+.swiper-tab {  
+  display: flex;  
+  flex-direction: row;  
+  line-height: 80rpx;  
+  border-bottom: 2rpx solid #F08080;  
+  background: 	#FFA54F;
+}  
+  
+.tab-item {  
+  width: 33.3%;  
+  text-align: center;  
+  font-size: 15px;  
+  color: #777;  
+}  
+  
+.swiper {  
+  height: 80%;  
+  background: #fff;  
+}  
+  
+.on {  
   font-size: 18px;
-  border:1px solid #aaa;
-  color:#0f0f0f;
+  color:#DB7093;  
+  border-bottom: 5rpx solid #F08080;  
+}  
+.personStyle{
+  width:48%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #ccc;
+  border-radius: 5px;
 }
-.icon-dingdan::before{
-  content: '\e656';
-  color:#ea7500;
-  margin:0 20px;
-}
-.icon-position::before{
-  content: '\e607';
-  color:#36ab60;
-  margin:0 20px;
-}
-.icon-icon_wuliuguanli::before{
-  content: '\e87b';
-  color:#ea7500;
-  margin:0 20px;
-}
-.icon-xiugaixiang::before{
-  content: '\e9ec';
-  color:#ea7500;
-  margin:0 20px;
-}
-.icon-fankuipingjia::before{
-  content: '\e62a';
-  color:#ea7500;
-  margin:0 20px;
-}
-.icon-youxuan::before{
-  content: '\e615';
-  color:#ea7500;
-  margin:0 20px;
-}
-.icon-mima::before{
-  content: '\e6a6';
-  color:#bad4ff;
-  margin:0 20px;
-}
-.icon-jiantou::after{
-  content: '\e65e';
-  color:#000;
-  position: absolute;
-  right:0;
+.closeStyle{
+  position:absolute;
+right:0px;
+top:0px;
+color:#aaa;
+font-size:30px;
+width:30px;
+height:30px;
+text-align:center;
+line-height:27px;
+border-radius:50%;
+
 }

@@ -8,7 +8,8 @@ Page({
   msgM:'注册窗口',
   username: '',
   password: '',
-  repassword:''
+  repassword:'',
+  userStatus:'',//辨识买家卖家
   },
 
   /**
@@ -48,47 +49,69 @@ Page({
       })
       return
     }else{
-      wx.request({
-        url: 'http://192.168.8.102/user/register',
-        data: {
-          username: this.data.username,
-          password: this.data.password
-        },
-        header: {
-          'content-type': 'application/json' // 默认值
-        },
-        success:  (res) =>{
-          if(res.data.code==0){
-            wx.showToast({
-              title: res.data.msg,
-              icon: 'none',
-              duration: 2000
+      wx.showActionSheet({
+        itemList: ['我是买家', '我是卖家'],
+        success: (res) => {
+          console.log(res.tapIndex)
+          if (res.tapIndex == '0') {
+            this.setData({
+              userStatus:2
             })
-          }else if(res.data.code==1){
-            wx.showToast({
-              title: '成功',
-              icon: 'success',
-              duration: 2000
+          } else if (res.tapIndex == '1'){
+            this.setData({
+              userStatus: 1
             })
-            setTimeout(function () {
-              wx.navigateBack({
-                delta: 1
-              })
-            }, 2000
-
-            )
           }
-        
-        
-        },
-        fail: function (err) {
-          wx.showToast({
-            title: '失败',
-            icon: 'none',
-            duration: 2000
-          })
+            wx.showLoading({
+              title: '注册中',
+              mask:'true'
+            })
+            wx.request({
+              url: 'http://192.168.8.102/user/register',
+              data: {
+                username: this.data.username,
+                password: this.data.password,
+                userStatus: this.data.userStatus
+              },
+              header: {
+                'content-type': 'application/json' // 默认值
+              },
+              success: (res) => {
+                wx.hideLoading()
+                if (res.data.code == 0) {
+                  wx.showToast({
+                    title: res.data.msg,
+                    icon: 'none',
+                    duration: 2000
+                  })
+                } else if (res.data.code == 1) {
+                  wx.showToast({
+                    title: '成功',
+                    icon: 'success',
+                    duration: 2000
+                  })
+                  setTimeout(function () {
+                    wx.navigateBack({
+                      delta: 1
+                    })
+                  }, 2000
+
+                  )
+                }
+
+
+              },
+              fail: function (err) {
+                wx.showToast({
+                  title: '失败',
+                  icon: 'none',
+                  duration: 2000
+                })
+              }
+            })
         }
       })
+ 
     }
     
   },

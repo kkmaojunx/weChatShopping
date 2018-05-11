@@ -34,7 +34,9 @@ Page({
     addressData:[],//收货地址的全部数据
     isadd:true,//新增还是修改的标识
     addId:'',//一条地址的id
-   
+
+
+    
   },
 
   /**
@@ -43,6 +45,10 @@ Page({
   onLoad: function (options) {
 
   },
+
+
+
+
   bindDateChange: function (e) {
     console.log(e.detail.value)
     this.setData({
@@ -68,6 +74,10 @@ Page({
   },
   //点击登录
   loginBtn: function () {
+    wx.showLoading({
+      title: '登陆中',
+      mask:'true'
+    })
     wx.request({
       url: 'http://192.168.8.102/user/login',
       data: {
@@ -78,6 +88,7 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: (res) => {
+        wx.hideLoading()
         if (res.data.code == 0) {
           wx.showToast({
             title: res.data.msg,
@@ -91,10 +102,18 @@ Page({
             duration: 2000
           })
           this.setData({
-            loginRight: true,
             userId: res.data.info,
-
           })
+          if(res.data.userStatus==2){
+            this.setData({
+              loginRight: true,
+            })
+          }else if(res.data.userStatus==1){
+           wx.redirectTo({
+             url: '../threePages/mePage/mePage',
+           })
+          }
+        
           wx.setStorage({
             key: 'username',
             data: this.data.username
@@ -107,10 +126,15 @@ Page({
             key: 'userId',
             data: this.data.userId
           })
+          wx.showLoading({
+            title: '获取中',
+            mask:'true'
+          })
           wx.request({
             url: 'http://192.168.8.102/user/userInfo',
             data: { id: this.data.userId },
             success: (res) => {
+              wx.hideLoading()
               console.log(res.data)
               if (res.data.code == 1) {
                 this.setData({
@@ -271,10 +295,15 @@ Page({
     this.setData({
       showPersonal: true
     })
+    wx.showLoading({
+      title: '获取中',
+      mask:'true'
+    })
     wx.request({
       url: 'http://192.168.8.102/user/userInfo',
       data: { id: this.data.userId },
       success: (res) => {
+        wx.hideLoading()
         console.log(res.data)
         if (res.data.code == 1) {
           this.setData({
@@ -676,7 +705,30 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (this.data.loginRight==true){
+      wx.request({
+        url: 'http://192.168.8.102/user/userInfo',
+        data: { id: this.data.userId },
+        success: (res) => {
+          wx.hideLoading()
+          console.log(res.data)
+          if (res.data.code == 1) {
+            this.setData({
+              meDate: res.data.info,
+              dates: res.data.info.birthday,
+              backImg: res.data.info.backgroundLocal,
+              headImg: res.data.info.headLocal,
+              imageBack: res.data.info.imageBackground,
+              imageHead: res.data.info.imageHead
+            })
+          }
+        },
+        fail: (err) => {
+          console.log(err)
+        }
+      })
+    }
+  
   },
 
   /**
