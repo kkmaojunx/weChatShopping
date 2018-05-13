@@ -14,8 +14,8 @@ Page({
     content:'',
     phone:'',
     loginRight: false,//是否显示我的窗口
-    headImg: "http://192.168.8.102/static/images/dongwu1.jpg",
-    backImg: "http://192.168.8.102/static/images/dongwu1.jpg",
+    headImg: "http://www.zhangdanling.cn/static/images/dongwu1.jpg",
+    backImg: "http://www.zhangdanling.cn/static/images/dongwu1.jpg",
     showPersonal: false,//个人信息显示
     changePwd: false,//修改密码显示
     getAdress: false,//收货地址点击
@@ -79,7 +79,7 @@ Page({
       mask:'true'
     })
     wx.request({
-      url: 'http://192.168.8.102/user/login',
+      url: 'http://www.zhangdanling.cn/user/login',
       data: {
         username: this.data.username,
         password: this.data.password
@@ -131,7 +131,7 @@ Page({
             mask:'true'
           })
           wx.request({
-            url: 'http://192.168.8.102/user/userInfo',
+            url: 'http://www.zhangdanling.cn/user/userInfo',
             data: { id: this.data.userId },
             success: (res) => {
               wx.hideLoading()
@@ -190,7 +190,7 @@ Page({
               var tempFilePaths = res.tempFilePaths
               var fileRoad = res.tempFiles[0]
               wx.uploadFile({
-                url: 'http://192.168.8.102/user/updateImage', //仅为示例，非真实的接口地址
+                url: 'http://www.zhangdanling.cn/user/updateImage', //仅为示例，非真实的接口地址
                 filePath: tempFilePaths[0],
                 header: {
                   'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -248,7 +248,7 @@ Page({
               console.log(tempFilePaths[0])
               var fileRoad = res.tempFiles
               wx.uploadFile({
-                url: 'http://192.168.8.102/user/updateImage', //仅为示例，非真实的接口地址
+                url: 'http://www.zhangdanling.cn/user/updateImage', //仅为示例，非真实的接口地址
                 filePath: tempFilePaths[0],
                 header: {
                   'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -300,7 +300,7 @@ Page({
       mask:'true'
     })
     wx.request({
-      url: 'http://192.168.8.102/user/userInfo',
+      url: 'http://www.zhangdanling.cn/user/userInfo',
       data: { id: this.data.userId },
       success: (res) => {
         wx.hideLoading()
@@ -338,7 +338,7 @@ Page({
         mask:'true'
       })
       wx.request({
-        url: 'http://192.168.8.102/user/register',
+        url: 'http://www.zhangdanling.cn/user/register',
         data: { id: this.data.userId, username: this.data.username, birthday: this.data.dates, content: this.data.content, phone: this.data.phone },
         success: (res) => {
           console.log(res.data)
@@ -393,7 +393,7 @@ Page({
         mask:'true'
       })
       wx.request({
-        url: 'http://192.168.8.102/user/validPassword',
+        url: 'http://www.zhangdanling.cn/user/validPassword',
         data: { id: this.data.userId, password: this.data.oldPwd},
         success:(res)=>{
           wx.hideLoading()
@@ -442,7 +442,7 @@ Page({
         mask: 'true'
       })
       wx.request({
-        url: 'http://192.168.8.102/user/register',
+        url: 'http://www.zhangdanling.cn/user/register',
         data: { id: this.data.userId, repetition: this.data.newPwd,password:this.data.newPwd2 },
         success: (res) => {
           console.log(res.data)
@@ -511,7 +511,7 @@ Page({
       getAdress: true,
     })
     wx.request({
-      url: 'http://192.168.8.102/address/list',
+      url: 'http://www.zhangdanling.cn/address/list',
       data:{userId:this.data.userId},
       success:(res)=>{
         console.log(res.data)
@@ -547,7 +547,7 @@ Page({
       mask:'true'
     })
     wx.request({
-      url: 'http://192.168.8.102/address/oneAddress',
+      url: 'http://www.zhangdanling.cn/address/oneAddress',
       data:{id:event.currentTarget.dataset.id},
       success:(res)=>{
         wx.hideLoading()
@@ -600,7 +600,7 @@ Page({
         mask:'true'
       })
       wx.request({
-        url: 'http://192.168.8.102/address/save',
+        url: 'http://www.zhangdanling.cn/address/save',
         data: { userId: this.data.userId, address: this.data.addressWrite, name: this.data.nameWrite, phone: this.data.phoneWrite, id: this.data.addId},
         success:(res)=>{
           wx.hideLoading()
@@ -633,7 +633,7 @@ Page({
             mask:'true'
           })
          wx.request({
-           url: 'http://192.168.8.102/address/delete',
+           url: 'http://www.zhangdanling.cn/address/delete',
            data:{ids:e.currentTarget.dataset.id},
            success:(res)=>{
              console.log(res)
@@ -707,7 +707,7 @@ Page({
   onShow: function () {
     if (this.data.loginRight==true){
       wx.request({
-        url: 'http://192.168.8.102/user/userInfo',
+        url: 'http://www.zhangdanling.cn/user/userInfo',
         data: { id: this.data.userId },
         success: (res) => {
           wx.hideLoading()

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentTab: 0,
+    currentTab: 2,
     showPersonal:false,
     meDate: {},//我的界面全部信息
     userId: null,
@@ -26,6 +26,14 @@ Page({
     nowDate: new Date(),
     addId: '',//一条地址的id
 
+
+//订单查看
+    searchResult: [],
+    clickId: null,
+    ishotPage: true,
+    noSession: false,//是否登录
+    userId: '',
+
   },
 
   /**
@@ -40,6 +48,7 @@ Page({
         })
       },
     })
+    
   },
   swichNav: function (e) {
     var that = this;
@@ -68,7 +77,7 @@ Page({
       mask: 'true'
     })
     wx.request({
-      url: 'http://192.168.8.102/user/userInfo',
+      url: 'http://www.zhangdanling.cn/user/userInfo',
       data: { id: this.data.userId },
       success: (res) => {
         wx.hideLoading()
@@ -94,6 +103,52 @@ Page({
       showPersonal: false
     })
   },
+  //修改按钮点击
+  sureChange() {
+    var x = /^1[3|4|5|7|8][0-9]{9}$/
+    console.log(this.data.addressWrite)
+    console.log(this.data.nameWrite)
+    console.log(this.data.phoneWrite)
+    if (!(x.test(this.data.phone))) {
+      wx.showToast({
+        title: '请输入正确的手机号码',
+        icon: 'none',
+        duration: 1000
+      })
+    } else {
+      wx.showLoading({
+        title: '修改中',
+        mask: 'true'
+      })
+      wx.request({
+        url: 'http://www.zhangdanling.cn/user/register',
+        data: { id: this.data.userId, username: this.data.username, birthday: this.data.dates, content: this.data.content, phone: this.data.phone },
+        success: (res) => {
+          console.log(res.data)
+          if (res.data.code == 1) {
+            this.setData({
+              showPersonal: false
+            })
+            wx.hideLoading()
+            wx.showToast({
+              title: '修改成功',
+              icon: 'success',
+              duration: 2000
+            })
+          } else {
+            wx.showToast({
+              title: res.data.msg,
+              icon: 'none',
+              duration: 2000,
+              mask: 'true'
+            })
+          }
+        }
+      })
+    }
+
+
+  },
   //修改密码
   changePwd() {
     this.setData({
@@ -115,7 +170,7 @@ Page({
       mask: 'true'
     })
     wx.request({
-      url: 'http://192.168.8.102/user/validPassword',
+      url: 'http://www.zhangdanling.cn/user/validPassword',
       data: { id: this.data.userId, password: this.data.oldPwd },
       success: (res) => {
         wx.hideLoading()
@@ -164,7 +219,7 @@ Page({
         mask: 'true'
       })
       wx.request({
-        url: 'http://192.168.8.102/user/register',
+        url: 'http://www.zhangdanling.cn/user/register',
         data: { id: this.data.userId, repetition: this.data.newPwd, password: this.data.newPwd2 },
         success: (res) => {
           console.log(res.data)
@@ -212,10 +267,12 @@ Page({
       data: '',
     })
     this.setData({
-      loginRight: false,
       username: '',
       password: ''
     })
+   wx.switchTab({
+     url: '../../firstPage/firstPage',
+   })
   },
   //获取用户名
   getUsername(e) {
@@ -239,11 +296,43 @@ Page({
       dates: e.detail.value
     })
   },
+  //开发中的
+  callUs(){
+    wx.showToast({
+      title: '功能开发中',
+      mask:'true',
+      icon:'none',
+      duration:1000
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    wx.request({
+      url: 'http://www.zhangdanling.cn/trolley/list',
+      data: {
+        userid: this.data.userId,
+        buy: 1
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: (res) => {
+
+        this.setData({
+          searchResult: res.data.info
+        })
+        console.log(res.data.info)
+      },
+      fail: function (err) {
+        wx.showToast({
+          title: '失败',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    })
   },
 
   /**

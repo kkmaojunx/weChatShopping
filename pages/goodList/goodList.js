@@ -15,7 +15,7 @@ Page({
    */
   onLoad: function (options) {
       wx.request({
-        url: 'http://192.168.8.102/shop/search',
+        url: 'http://www.zhangdanling.cn/shop/search',
         data: {
           title: options.searchValue,
           hot:options.hot

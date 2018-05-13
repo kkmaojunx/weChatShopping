@@ -37,7 +37,7 @@ Page({
             noSession:false
           })
           wx.request({
-            url: 'http://192.168.8.102/trolley/list',
+            url: 'http://www.zhangdanling.cn/trolley/list',
             data: {
               userid: this.data.userId,
               buy: 1

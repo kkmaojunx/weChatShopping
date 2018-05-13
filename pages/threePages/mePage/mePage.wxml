@@ -12,6 +12,29 @@
     <swiper-item>  
       <view>
       
+<!--商品分类列表-->
+<view style='display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap'>
+   <view style='width:40%;height:280px;border:1px solid #aaa;margin-top:10px;' wx:for="{{searchResult}}" data-index="{{item.id}}">
+    <image  wx:key='{{index}}' src='{{item.trolleyImg}}' style='width:100%;height:80%;'></image>
+<!--商品下面的信息-->
+    <view style='width:100%;height:20%;border-top:1px solid #eee;overflow:hidden'>
+      <view style='display:flex;justify-content:space-around;align-items:center;width:100%;height:50%'>
+         <text style='color:#ea7500;font-size:22px;'>{{'￥'+item.money}}</text>
+         <text style='color:red;font-size:18px;' class='iconfont icon-huo'>{{item.hot}}</text>
+      </view>
+      <view style='width:100%;height:50%; text-overflow:ellipsis;white-space:nowrap; overflow: hidden;font-size:14px;color:#aaa'>
+      {{item.shoptitle}}
+      </view>
+       
+    </view>
+   </view>
+ 
+</view>
+<!--点击商品跳转-->
+  <view class="{{(searchResult.length==0&&noSession==false)?'showItem':'hiddenItem'}} noneStyle">
+空空如也~
+</view>
+
       </view>  
     </swiper-item>  
     <swiper-item>  
@@ -21,9 +44,9 @@
       <view style='display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;width:100%;height:90%'>
           <view  class='personStyle' style='background:#54FF9F' bindtap='personalinfo'>个人信息</view>
            <view class='personStyle' style='background:#EE9A49' bindtap='changePwd'>修改密码</view>
-           <view class='personStyle' style='background:#EE30A7'>联系我们</view>
-           <view class='personStyle' style='background:#71C671'>退货管理</view>
-           <view class='personStyle' style='background:#32CD32'>联系物流</view>
+           <view class='personStyle' style='background:#EE30A7' bindtap='callUs'>联系我们</view>
+           <view class='personStyle' style='background:#71C671' bindtap='callUs'>退货管理</view>
+           <view class='personStyle' style='background:#32CD32' bindtap='callUs'>联系物流</view>
             <view class='personStyle' style='background:#A2B5CD' bindtap='existLogin'>退出登录</view>
       </view>  
     </swiper-item>  

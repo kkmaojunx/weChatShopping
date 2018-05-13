@@ -36,7 +36,7 @@ wx.getStorage({
         title: '购物车',
       })
       wx.request({
-        url: 'http://192.168.8.102/trolley/list',
+        url: 'http://www.zhangdanling.cn/trolley/list',
         data: { userid: this.data.userId, buy: 0 },
         success: (res) => {
 
@@ -66,7 +66,7 @@ wx.getStorage({
       title: '删除中',
     })
     wx.request({
-      url: 'http://192.168.8.102/trolley/delete',
+      url: 'http://www.zhangdanling.cn/trolley/delete',
       data:{id:event.currentTarget.dataset.index},
       success:()=>{
         wx.showToast({
@@ -89,7 +89,7 @@ wx.getStorage({
   //从购物车购买
   buyInShopList(event){
 wx.request({
-  url: 'http://192.168.8.102/trolley/buy',
+  url: 'http://www.zhangdanling.cn/trolley/buy',
   data:{ids:event.currentTarget.dataset.index},
   success:(res)=>{
     wx.showToast({

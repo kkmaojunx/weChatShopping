@@ -41,7 +41,7 @@ Page({
    */
   onReady: function () {
   wx.request({
-    url: 'http://192.168.8.102/activity/list',
+    url: 'http://www.zhangdanling.cn/activity/list',
     success:(res)=>{
     this.setData({
       hotList:res.data.info.splice(3,res.data.info.length-3),

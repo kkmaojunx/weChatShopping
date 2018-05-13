@@ -67,7 +67,7 @@ Page({
               mask:'true'
             })
             wx.request({
-              url: 'http://192.168.8.102/user/register',
+              url: 'http://www.zhangdanling.cn/user/register',
               data: {
                 username: this.data.username,
                 password: this.data.password,

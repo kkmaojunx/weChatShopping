@@ -33,7 +33,7 @@ Page({
       title: '加载中',
     })
     wx.request({
-      url: 'http://192.168.8.102/shop/shopById',
+      url: 'http://www.zhangdanling.cn/shop/shopById',
       data: { id:options.id },
       success: (res) => {
         this.setData({
@@ -83,7 +83,7 @@ Page({
         })
       }else{
         wx.request({
-          url: "http://192.168.8.102/trolley/add",
+          url: "http://www.zhangdanling.cn/trolley/add",
           data: { shoppingid: this.data.goodsDetail.id, userid: this.data.userId, labelId: this.data.beiClick, buy: this.data.clickTitle == '确认购买' ? 1 : 0 },
           success: () => {
             wx.showToast({
