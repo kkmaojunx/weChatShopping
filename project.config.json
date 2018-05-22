@@ -9,8 +9,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.0.0",
-	"appid": "touristappid",
-	"projectname": "fileBymao",
+	"appid": "wx6bc69f050bfce54e",
+	"projectname": "mao",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

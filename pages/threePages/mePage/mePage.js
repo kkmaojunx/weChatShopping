@@ -207,6 +207,13 @@ Page({
   },
   //确认修改密码
   rewritePwd() {
+    if (this.data.newPwd == '' || this.data.newPwd2==''){
+      wx.showToast({
+        title: '请输入密码',
+        icon: 'none',
+        duration: 1000
+      })
+    }
     if (this.data.newPwd != this.data.newPwd2) {
       wx.showToast({
         title: '请输入相同密码',
@@ -310,16 +317,12 @@ Page({
    */
   onReady: function () {
     wx.request({
-      url: 'http://www.zhangdanling.cn/trolley/list',
+      url: 'http://www.zhangdanling.cn/trolley/soldById',
       data: {
-        userid: this.data.userId,
-        buy: 1
+        id: this.data.userId,
       },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
+  
       success: (res) => {
-
         this.setData({
           searchResult: res.data.info
         })

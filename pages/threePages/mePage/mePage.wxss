@@ -1,15 +1,14 @@
 @import "../../font/iconfont.wxss";
 @font-face {
   font-family: 'iconfont';  /* project id 630425 */
-  src: url('//at.alicdn.com/t/font_630425_ekt6ub0qdijxlxr.eot');
-  src: url('//at.alicdn.com/t/font_630425_ekt6ub0qdijxlxr.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_630425_ekt6ub0qdijxlxr.woff') format('woff'),
-  url('//at.alicdn.com/t/font_630425_ekt6ub0qdijxlxr.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_630425_ekt6ub0qdijxlxr.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_630425_vg0g2hs6c5vwvcxr.eot');
+  src: url('//at.alicdn.com/t/font_630425_vg0g2hs6c5vwvcxr.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_630425_vg0g2hs6c5vwvcxr.woff') format('woff'),
+  url('//at.alicdn.com/t/font_630425_vg0g2hs6c5vwvcxr.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_630425_vg0g2hs6c5vwvcxr.svg#iconfont') format('svg');
 }
 .icon-huo::before{
-  content: "\e606";
-  color:red;
+  content: "\e724";
 }
 .showItem{
   display: block
@@ -52,7 +51,7 @@ page{
 }  
   
 .swiper {  
-  height: 80%;  
+  height: 90%;  
   background: #fff;  
 }  
   

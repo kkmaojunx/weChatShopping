@@ -1,57 +1,59 @@
-<view class="pagemm">  
-  
-  <!--顶部导航栏-->  
-  <view class="swiper-tab">  
-    <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">订单查看</view>  
-    <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">店铺管理</view>  
-    <view class="tab-item {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">个人信息</view>  
-  </view>  
-  
-  <!--内容主体-->  
-  <swiper class="swiper" current="{{currentTab}}" duration="200" bindchange="swiperChange">  
-    <swiper-item>  
-      <view>
-      
-<!--商品分类列表-->
-<view style='display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap'>
-   <view style='width:40%;height:280px;border:1px solid #aaa;margin-top:10px;' wx:for="{{searchResult}}" data-index="{{item.id}}">
-    <image  wx:key='{{index}}' src='{{item.trolleyImg}}' style='width:100%;height:80%;'></image>
-<!--商品下面的信息-->
-    <view style='width:100%;height:20%;border-top:1px solid #eee;overflow:hidden'>
-      <view style='display:flex;justify-content:space-around;align-items:center;width:100%;height:50%'>
-         <text style='color:#ea7500;font-size:22px;'>{{'￥'+item.money}}</text>
-         <text style='color:red;font-size:18px;' class='iconfont icon-huo'>{{item.hot}}</text>
-      </view>
-      <view style='width:100%;height:50%; text-overflow:ellipsis;white-space:nowrap; overflow: hidden;font-size:14px;color:#aaa'>
-      {{item.shoptitle}}
-      </view>
-       
-    </view>
-   </view>
- 
-</view>
-<!--点击商品跳转-->
-  <view class="{{(searchResult.length==0&&noSession==false)?'showItem':'hiddenItem'}} noneStyle">
-空空如也~
-</view>
+<view class="pagemm">
 
-      </view>  
-    </swiper-item>  
-    <swiper-item>  
-      <view>我是tab2</view>  
-    </swiper-item>  
-    <swiper-item>  
+  <!--顶部导航栏-->
+  <view class="swiper-tab">
+    <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">订单查看</view>
+    <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">店铺管理</view>
+    <view class="tab-item {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">个人信息</view>
+  </view>
+
+  <!--内容主体-->
+  <swiper class="swiper" current="{{currentTab}}" duration="200" bindchange="swiperChange">
+    <swiper-item style='overflow:auto'>
+      <view >
+
+        <!--商品分类列表-->
+        <view style='display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap'>
+          <view style='width:40%;height:280px;border:1px solid #aaa;margin-top:10px;' wx:for="{{searchResult}}" data-index="{{item.id}}">
+            <image wx:key='{{index}}' src='{{item.trolleyImg}}' style='width:100%;height:80%;'></image>
+            <!--商品下面的信息-->
+            <view style='width:100%;height:20%;border-top:1px solid #eee;overflow:hidden'>
+              <view style='display:flex;justify-content:space-around;align-items:center;width:100%;height:50%'>
+                <text style='color:#ea7500;font-size:22px;'>{{'￥'+item.money}}</text>
+                <text style='color:red;font-size:18px;' class='iconfont icon-huo'>{{item.lableName}}</text>
+              </view>
+              <view style='width:100%;height:50%; text-overflow:ellipsis;white-space:nowrap; overflow: hidden;font-size:14px;color:#aaa'>
+                {{item.shoptitle}}
+              </view>
+
+            </view>
+          </view>
+
+        </view>
+        <!--点击商品跳转-->
+        <view class="{{(searchResult.length==0&&noSession==false)?'showItem':'hiddenItem'}} noneStyle">
+          空空如也~
+        </view>
+
+      </view>
+    </swiper-item>
+
+
+    <swiper-item>
+      <view>我是tab2</view>
+    </swiper-item>
+    <swiper-item>
       <view style='display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;width:100%;height:90%'>
-          <view  class='personStyle' style='background:#54FF9F' bindtap='personalinfo'>个人信息</view>
-           <view class='personStyle' style='background:#EE9A49' bindtap='changePwd'>修改密码</view>
-           <view class='personStyle' style='background:#EE30A7' bindtap='callUs'>联系我们</view>
-           <view class='personStyle' style='background:#71C671' bindtap='callUs'>退货管理</view>
-           <view class='personStyle' style='background:#32CD32' bindtap='callUs'>联系物流</view>
-            <view class='personStyle' style='background:#A2B5CD' bindtap='existLogin'>退出登录</view>
-      </view>  
-    </swiper-item>  
-  </swiper>  
-</view>  
+        <view class='personStyle' style='background:#54FF9F' bindtap='personalinfo'>个人信息</view>
+        <view class='personStyle' style='background:#EE9A49' bindtap='changePwd'>修改密码</view>
+        <view class='personStyle' style='background:#EE30A7' bindtap='callUs'>联系我们</view>
+        <view class='personStyle' style='background:#71C671' bindtap='callUs'>退货管理</view>
+        <view class='personStyle' style='background:#32CD32' bindtap='callUs'>联系物流</view>
+        <view class='personStyle' style='background:#A2B5CD' bindtap='existLogin'>退出登录</view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>
 
 
 <!--个人信息-->
@@ -88,18 +90,18 @@
 <view style='position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;width:75%;height:50%;background:#ccc;border-radius:10px;padding:40px 20px 0 20px;' class="{{changePwd?'showItem':'hiddenItem'}}">
   <view class='closeStyle' bindtap='closePwd'>x</view>
   <view style='width:100%;display:flex;justify-content:center;align-items:center;height:40px;'>
-    
+
     <input value='{{oldPwd}}' style='border:1px solid #aaa;border-radius:3px;' bindinput='getOldpwd' disabled='{{!noCheck}}' placeholder='原密码'></input>
   </view>
-  <button style='margin-top:10px;' bindtap='checkPwd' disabled='{{!noCheck}}'>验证</button>
+  <button style='margin-top:10px;background:teal' bindtap='checkPwd' disabled='{{!noCheck}}'>验证</button>
   <view style='width:100%;display:flex;justify-content:center;align-items:center;height:40px;margin-top:10px;'>
-  
+
     <input value='{{newPwd}}' style='border:1px solid #aaa;border-radius:3px;' disabled='{{noCheck}}' bindinput='getNewPwd' placeholder='新密码'></input>
   </view>
   <view style='width:100%;display:flex;justify-content:center;align-items:center;height:40px;margin-top:10px;'>
-    
+
     <input value='{{newPwd2}}' style='border:1px solid #aaa;border-radius:3px;' disabled='{{noCheck}}' bindinput='getNewPwd2' placeholder='确认密码'></input>
   </view>
-  <button style='position:absolute;bottom:0;left:0;right:0;margin:auto;' bindtap='rewritePwd' disabled='{{noCheck}}'>确认修改
+  <button style='position:absolute;bottom:0;left:0;right:0;margin:auto;background:teal' bindtap='rewritePwd' disabled='{{noCheck}}'>确认修改
   </button>
 </view>

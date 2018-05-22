@@ -8,6 +8,7 @@ Page({
     valudScale: 0,  //购买框的大小
     beiClick: null,
     goodsDetail: [],  //详情页的总体数据
+    sellId:null,//卖家店铺id
     imgUrl:'',//放大图片的图片地址
     showBig:false,
     clickTitle:'',
@@ -38,6 +39,7 @@ Page({
       success: (res) => {
         this.setData({
           goodsDetail: res.data.info,
+          sellId:res.data.info.merchantid.id
         })
         wx.hideLoading()
         console.log(res.data.info)
@@ -84,7 +86,7 @@ Page({
       }else{
         wx.request({
           url: "http://www.zhangdanling.cn/trolley/add",
-          data: { shoppingid: this.data.goodsDetail.id, userid: this.data.userId, labelId: this.data.beiClick, buy: this.data.clickTitle == '确认购买' ? 1 : 0 },
+          data: { shoppingid: this.data.goodsDetail.id, userid: this.data.userId, labelId: this.data.beiClick, buy: this.data.clickTitle == '确认购买' ? 1 : 0, merchant:this.data.sellId},
           success: () => {
             wx.showToast({
               title: this.data.clickTitle == '确认购买' ? '购买成功' : '添加成功',
